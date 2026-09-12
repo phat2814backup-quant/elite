@@ -13,7 +13,9 @@ import os
 import time
 import textwrap
 import html
+import base64
 import streamlit as st
+
 
 try:
     import dotenv
@@ -63,6 +65,28 @@ def render_html(html_content: str):
     """Render HTML an toàn, tự động loại bỏ thụt đầu dòng để tránh lỗi code-block của Markdown."""
     clean_html = textwrap.dedent(html_content).strip()
     st.markdown(clean_html, unsafe_allow_html=True)
+
+
+def get_anchor_image_html(topic_id: str, chunk_id: str) -> str:
+    """Tự động kiểm tra và nhúng ảnh mỏ neo siêu nhẹ định dạng WebP/PNG/SVG nếu có."""
+    for ext in [".webp", ".png", ".jpg", ".svg"]:
+        img_path = os.path.join("assets", "anchors", f"{topic_id}_{chunk_id}{ext}")
+        if os.path.exists(img_path):
+            try:
+                with open(img_path, "rb") as f:
+                    b64_data = base64.b64encode(f.read()).decode("utf-8")
+                mime = "image/svg+xml" if ext == ".svg" else f"image/{ext[1:]}"
+                return f"""
+                <div style="text-align: center; margin: 10px 0 14px 0;">
+                    <img src="data:{mime};base64,{b64_data}" 
+                         style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 4px 15px rgba(0,0,0,0.4);" 
+                         alt="Mỏ neo trực quan" />
+                </div>
+                """
+            except Exception:
+                pass
+    return ""
+
 
 
 PILLAR_ICONS = {
@@ -220,9 +244,11 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
     cols = [c1, c2, c3]
     for idx, (col, chunk) in enumerate(zip(cols, chunks)):
         with col:
+            img_html = get_anchor_image_html(topic["id"], chunk["id"])
             card_html = f"""
             <div class="trinity-card">
                 <div class="anchor-badge">{chunk['anchor_icon']} MỎ NEO: {chunk['anchor_name']}</div>
+                {img_html}
                 <h3 style="color: #f8fafc; margin-top: 0; font-size: 1.25rem;">{chunk['label']}</h3>
                 <p style="color: #38bdf8; font-size: 0.85rem; font-weight: 600; line-height: 1.4;">{chunk.get('sub_modes', '')}</p>
                 <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 12px 0;">
@@ -239,6 +265,7 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
             </div>
             """
             render_html(card_html)
+
 
     st.markdown("---")
     st.markdown("### ⚡ Đấu Trường Phản Xạ 5 Giây (Feynman Challenge)")
