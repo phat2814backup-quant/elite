@@ -37,7 +37,9 @@ from core.models_engine import (
     load_unified_farrow_catalog,
     get_farrow_models_grouped,
     get_farrow_metrics,
-    draw_random_farrow_sprint_trio
+    draw_random_farrow_sprint_trio,
+    get_models_for_topic_chunk,
+    get_model_full_detail
 )
 
 # -----------------------------------------------------------------------------
@@ -61,6 +63,67 @@ def render_html(html_content: str):
     """Render HTML an toàn, tự động loại bỏ thụt đầu dòng để tránh lỗi code-block của Markdown."""
     clean_html = textwrap.dedent(html_content).strip()
     st.markdown(clean_html, unsafe_allow_html=True)
+
+
+PILLAR_ICONS = {
+    "Kinh tế học": "📈",
+    "Tâm lý học": "🧠",
+    "Vật lý học": "⚛️",
+    "Sinh học": "🧬",
+    "Toán học & Xác suất": "🎲",
+    "Hệ thống": "🕸️",
+}
+
+
+def render_gmm_detailed_model(m: dict, is_expanded: bool = False):
+    """Render chi tiết mô hình theo chuẩn The Great Mental Models Framework với đầy đủ các trường tinh hoa."""
+    tier_badge = {1: "⭐ Tier 1 (Siêu hạt nhân)", 2: "🎯 Tier 2 (Chiến lược)", 3: "🔬 Tier 3 (Hệ thống)"}.get(m.get("tier"), "")
+    has_gmm = bool(m.get("action_steps"))
+    deep_badge = " · 💎 GMM Chuyên sâu" if has_gmm else ""
+    icon = PILLAR_ICONS.get(m.get("pillar", ""), "📌")
+
+    expander_title = f"{icon} [{m.get('id', '')}] {m.get('name_vi', '')} — {m.get('name_en', '')} ({tier_badge}{deep_badge})"
+    with st.expander(expander_title, expanded=is_expanded):
+        c_left, c_right = st.columns([3, 2])
+        with c_left:
+            st.markdown(f"**⚡ Chân lý gốc (First Principle):**")
+            st.info(m.get("first_principle", ""))
+            st.markdown(f"**🚀 Đòn bẩy Elite (Cách vận dụng tối thượng):**")
+            st.write(m.get("elite_leverage", ""))
+        with c_right:
+            st.markdown(f"**⚠️ Bẫy ngụy biện (Inversion Trap):**")
+            st.warning(m.get("inversion_trap", ""))
+            st.markdown(f"**⏱️ Câu hỏi kích hoạt 5 giây (Trigger Prompt):**")
+            st.caption(f"👉 *\"{m.get('trigger_question', '')}\"*")
+
+        if m.get("lollapalooza_pairs"):
+            st.markdown(f"**🔗 Cặp cộng hưởng Lollapalooza đề xuất:** `{'` · `'.join(m['lollapalooza_pairs'])}`")
+
+        if m.get("id") == "PHYS-11":
+            st.success("⚡ **Gợi ý thực hành Tư duy Nguyên bản (First Principles):** Bóc tách về chân lý vật lý không thể tối giản hơn trước khi suy luận tiếp!")
+        elif m.get("id") == "PSY-12":
+            st.info("📓 **Gợi ý thực hành Vòng tròn Năng lực (Circle of Competence):** Luôn xác định ranh giới những gì bạn thực sự am hiểu và những gì chỉ là ảo tưởng!")
+
+        # GMM Deep Framework: Action Steps, Boundary Conditions & Real-World Case Studies
+        if m.get("action_steps") or m.get("boundary_conditions") or m.get("real_world_case"):
+            st.divider()
+            st.markdown("#### 💎 Khung Phân Tích Chuyên Sâu (The Great Mental Models Framework)")
+
+            col_proto, col_bound = st.columns([3, 2])
+            with col_proto:
+                if m.get("action_steps"):
+                    st.markdown(f"**🛠️ Quy trình thực thi {len(m['action_steps'])} bước (Action Protocol):**")
+                    for step in m["action_steps"]:
+                        st.markdown(f"- {step}")
+            with col_bound:
+                if m.get("boundary_conditions"):
+                    st.markdown("**⛔ Ranh giới áp dụng (Khi nào KHÔNG dùng):**")
+                    st.error(m["boundary_conditions"])
+
+            if m.get("real_world_case"):
+                st.markdown("**🌐 Tình huống thực chiến đa chiều (Case Studies Thực tế):**")
+                st.markdown(m["real_world_case"])
+
 
 
 # -----------------------------------------------------------------------------
@@ -194,47 +257,52 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
                 else:
                     st.error("❌ **CHƯA ĐÚNG!** Hãy nhớ lại 3 mỏ neo trong lâu đài ký ức để phản xạ lại.")
 
-    # Expander tra cứu nhanh 152 mô hình gốc nếu người dùng cần nghiên cứu chi tiết
+    # Expander bóc tách chi tiết 9 mô hình gốc của chủ đề hiện tại
     st.markdown("---")
-    with st.expander("📚 Tra cứu chi tiết danh mục 152 Mô hình & Nguyên lý gốc (Tùy chọn nâng cao)", expanded=False):
-        all_items = load_unified_farrow_catalog()
-        metrics = get_farrow_metrics()
-        st.caption(f"Tổng hợp {metrics['total']} mô hình & nguyên lý sạch (gồm {metrics['tier1_count']} siêu hạt nhân Tier 1).")
+    with st.expander(f"📚 Bóc Tách Chi Tiết Mô Hình & Nguyên Lý Gốc Của Chủ Đề: {topic['title']} (9 Mô Hình Tinh Hoa)", expanded=True):
+        st.markdown(f"Trực tiếp bóc tách 9 mô hình cấu thành nên 3 Trụ Cột của **{topic['title']}** theo chuẩn Charlie Munger & The Great Mental Models Framework:")
         
-        c_f1, c_f2 = st.columns([1, 2])
-        with c_f1:
-            t_filter = st.selectbox("Lọc cấp độ:", ["Tất cả", "⭐ Tier 1 (Pareto)", "Cấp 2 & 3"], key="exp_tier")
-        with c_f2:
-            s_kw = st.text_input("Tìm kiếm:", placeholder="Nhập tên mô hình hoặc nguyên lý...", key="exp_search")
+        tab_t1, tab_t2, tab_t3 = st.tabs([
+            f"🚪 {chunks[0]['label']}",
+            f"🖥️ {chunks[1]['label']}",
+            f"🪑 {chunks[2]['label']}"
+        ])
+        
+        for tab_obj, chunk in zip([tab_t1, tab_t2, tab_t3], chunks):
+            with tab_obj:
+                st.caption(f"📍 **Mỏ neo không gian:** {chunk['anchor_icon']} {chunk['anchor_name']}  |  ⚙️ **Cơ chế nén:** `{chunk.get('sub_modes', '')}`")
+                models_in_chunk = get_models_for_topic_chunk(chunk)
+                for m_idx, m in enumerate(models_in_chunk):
+                    # Mở rộng thẻ đầu tiên mặc định trong mỗi Trụ
+                    render_gmm_detailed_model(m, is_expanded=(m_idx == 0))
+
+        # Tùy chọn mở rộng: tra cứu thêm trong toàn bộ 152 mô hình nếu cần
+        st.markdown("---")
+        with st.expander("🔍 Mở rộng: Tra cứu tìm kiếm trong toàn bộ 152 Mô hình & Nguyên lý gốc khác", expanded=False):
+            all_items = load_unified_farrow_catalog()
+            metrics = get_farrow_metrics()
+            st.caption(f"Tổng hợp {metrics['total']} mô hình & nguyên lý sạch (gồm {metrics['tier1_count']} siêu hạt nhân Tier 1).")
             
-        display_items = all_items
-        if t_filter == "⭐ Tier 1 (Pareto)":
-            display_items = [x for x in display_items if x.get("tier") == 1]
-        elif t_filter == "Cấp 2 & 3":
-            display_items = [x for x in display_items if x.get("tier") in [2, 3]]
-            
-        if s_kw.strip():
-            kw_low = s_kw.strip().lower()
-            display_items = [x for x in display_items if kw_low in str(x.get("name_vi", "")).lower() or kw_low in str(x.get("name_en", "")).lower() or kw_low in str(x.get("first_principle", "")).lower()]
-            
-        st.caption(f"Tìm thấy {len(display_items)} kết quả:")
-        c_sub1, c_sub2 = st.columns(2)
-        for sub_idx, sub_item in enumerate(display_items[:20]):
-            target_sub = c_sub1 if sub_idx % 2 == 0 else c_sub2
-            with target_sub:
-                sub_tier = '<span class="badge-tier1">⭐ TIER 1</span>' if sub_item.get("tier") == 1 else ""
-                card_sub_html = f"""
-                <div class="model-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="badge-{sub_item.get('farrow_pillar', 'root')}">{sub_item.get('pillar', 'Đa ngành')}</span>
-                        {sub_tier}
-                    </div>
-                    <div class="model-title">#{sub_item.get('id', '')} {sub_item.get('name_vi', '')} <span style="font-size: 0.8rem; color: #64748b;">({sub_item.get('name_en', '')})</span></div>
-                    <div class="model-rule">💡 <b>Bản chất:</b> {sub_item.get('first_principle', '')}</div>
-                    <div class="trigger-box">⚡ <b>Phản xạ 5s:</b> <i>"{sub_item.get('trigger_question', '')}"</i></div>
-                </div>
-                """
-                render_html(card_sub_html)
+            c_f1, c_f2 = st.columns([1, 2])
+            with c_f1:
+                t_filter = st.selectbox("Lọc cấp độ:", ["Tất cả", "⭐ Tier 1 (Pareto)", "Cấp 2 & 3"], key="exp_tier")
+            with c_f2:
+                s_kw = st.text_input("Tìm kiếm:", placeholder="Nhập tên mô hình hoặc nguyên lý...", key="exp_search")
+                
+            display_items = all_items
+            if t_filter == "⭐ Tier 1 (Pareto)":
+                display_items = [x for x in display_items if x.get("tier") == 1]
+            elif t_filter == "Cấp 2 & 3":
+                display_items = [x for x in display_items if x.get("tier") in [2, 3]]
+                
+            if s_kw.strip():
+                kw_low = s_kw.strip().lower()
+                display_items = [x for x in display_items if kw_low in str(x.get("name_vi", "")).lower() or kw_low in str(x.get("name_en", "")).lower() or kw_low in str(x.get("first_principle", "")).lower()]
+                
+            st.caption(f"Tìm thấy {len(display_items)} kết quả:")
+            for sub_item in display_items[:10]:
+                render_gmm_detailed_model(sub_item, is_expanded=False)
+
 
 # -----------------------------------------------------------------------------
 # PHÒNG 2: PHÒNG ÉP XUNG 10 PHÚT (10-MINUTE FOCUS SPRINT)

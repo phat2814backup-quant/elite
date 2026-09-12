@@ -27,6 +27,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['PHYS-11', 'MATH-05', 'SYS-11'],
                 "label": "TRỤ 1: SOI GỐC (ROOT)",
                 "sub_modes": "(1) First Principles (Nguyên lý Khởi thủy) + (2) Inversion (Tư duy Đảo ngược) + (3) Latticework (Mạng lưới Đa ngành)",
                 "principle": "1. Đập vụn mọi giả định về chân lý vật lý gốc rễ ➔ 2. Luôn lộn ngược bài toán tìm mọi cách chết để né tránh ➔ 3. Đan kết các mô hình đa ngành lại thành tấm lưới đỡ quyết định.",
@@ -37,6 +38,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['MATH-03', 'SYS-10', 'ECON-10'],
                 "label": "TRỤ 2: ĐỌC DÒNG (FLOW)",
                 "sub_modes": "(1) Xác suất Bayes + (2) Tư duy Bậc hai + (3) Game Theory (Lý thuyết Trò chơi)",
                 "principle": "1. Liên tục cập nhật xác suất khi có dữ liệu mới ➔ 2. Luôn tự hỏi 'Và rồi sau đó chuyện gì xảy ra tiếp theo?' ➔ 3. Đọc vị động cơ và nước cờ phản ứng của đối thủ.",
@@ -47,6 +49,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['SYS-04', 'MATH-04', 'MATH-01'],
                 "label": "TRỤ 3: RA ĐÒN (STRIKE)",
                 "sub_modes": "(1) Optionality Barbell (Bất đối xứng Taleb) + (2) Thử nghiệm Tinh gọn (Lean Experiment) + (3) Đa quy mô Thời gian (Multi-timeframe)",
                 "principle": "1. Khóa chặt rủi ro cực nhỏ ở mức 1 cọng lông để đón tiềm năng ăn dày 3 bát thóc ➔ 2. Tung thử nghiệm vi mô chi phí bằng 0 ngay hôm nay ➔ 3. Kiên định nắm giữ vị thế trong tầm nhìn 10 năm.",
@@ -80,6 +83,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['ECON-02', 'ECON-01', 'ECON-15'],
                 "label": "TRỤ 1: BẢN CHẤT ZERO CASH FLOW & CHI PHÍ CƠ HỘI",
                 "sub_modes": "(1) Zero Cash Flow + (2) Lãi suất thực Mỹ (Real Yields) + (3) Cuộc chơi Tổng âm (Negative-sum Game)",
                 "principle": "1. Vàng không tự đẻ ra tiền cũng không có cổ tức ➔ 2. Giá vàng chạy nghịch chiều tuyệt đối với Lãi suất thực của Mỹ (Chi phí cơ hội) ➔ 3. Mọi giao dịch phái sinh chỉ là cuộc chiến cướp tiền lẫn nhau sau khi trừ phí sàn.",
@@ -90,6 +94,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['MATH-04', 'PSY-03', 'ECON-10'],
                 "label": "TRỤ 2: THANH KHOẢN LÀ NHIÊN LIỆU (SWEEP)",
                 "sub_modes": "(1) Đỉnh Đáy Đều (Equal Highs/Lows) + (2) Bồn Chứa Xăng Stop Loss + (3) Sói Săn Thanh Khoản (Smart Money Sweep)",
                 "principle": "1. Nơi đám đông nhìn thấy kháng cự/hỗ trợ đẹp chính là nơi họ đặt lệnh dừng lỗ dày đặc ➔ 2. Khối lượng Stop Loss đó chính là cây xăng thanh khoản dồi dào nhất thị trường ➔ 3. Sói già luôn đẩy giá quét sạch bồn xăng đó trước khi quay đầu chuyển động thật sự.",
@@ -100,6 +105,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['PHYS-01', 'PHYS-14', 'SYS-02'],
                 "label": "TRỤ 3: HẤP THỤ CVD & LÒ XO NÉN RÂU NẾN",
                 "sub_modes": "(1) Hấp thụ Lệnh Giới hạn (Limit Absorption) + (2) Râu nến Phanh Gấp + (3) Nén Lò xo Năng lượng (Compression)",
                 "principle": "1. Khối lượng bán chủ động cực lớn (CVD âm) nhưng giá không giảm sâu chứng tỏ có bức tường mua ẩn ➔ 2. Cây nến rút chân để lại râu dài thể hiện lực phanh gấp đảo chiều ➔ 3. Biên độ dao động bị bóp nghẹt như lò xo nén báo hiệu một vụ nổ Marubozu sắp giải phóng năng lượng.",
@@ -133,6 +139,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['PHYS-10', 'PHYS-11', 'SYS-13'],
                 "label": "TRỤ 1: BÓC TÁCH KHÔNG DÙNG TỪ HÀN LÂM",
                 "sub_modes": "(1) Kỹ thuật Feynman + (2) Phân biệt Biết Tên vs Hiểu Bản Chất + (3) Phép Loại suy Đời thường (Analogy)",
                 "principle": "1. Nếu không thể giải thích cho một đứa trẻ 10 tuổi hiểu thì bạn chưa hiểu nó ➔ 2. Biết tên gọi của một vật không đồng nghĩa với việc hiểu cơ chế vận hành của nó ➔ 3. Sử dụng các hình ảnh ẩn dụ đời thường quen thuộc để thế chỗ cho các thuật ngữ trừu tượng.",
@@ -143,6 +150,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['BIO-07', 'PSY-01', 'MATH-02'],
                 "label": "TRỤ 2: QUY TẮC SỐ 3 & MỎ NEO KHÔNG GIAN FARROW",
                 "sub_modes": "(1) Dave Farrow Rule of 3 + (2) Lâu đài Ký ức Không gian (Memory Palace) + (3) Hình ảnh Dị biệt Phi lý (Absurd Vivid Imagery)",
                 "principle": "1. Não người chỉ xử lý tối đa 3 khối thông tin cùng một lúc ➔ 2. Ghim 3 khối hạt nhân vào 3 đồ vật không gian quen thuộc trong tầm mắt ➔ 3. Phóng đại hình ảnh thành dị biệt, quái đản và phi lý gấp 10 lần để đóng đinh vào trí nhớ dài hạn.",
@@ -153,6 +161,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['MATH-01', 'BIO-03', 'SYS-02'],
                 "label": "TRỤ 3: ÉP XUNG 10 PHÚT & THỞ BỤNG SẠC PIN",
                 "sub_modes": "(1) 10-Minute Focus Sprint + (2) Xả Cortisol Giảm Căng thẳng + (3) Thở Bụng Đưa Não về Sóng Alpha",
                 "principle": "1. Chạy nước rút tập trung 100% trong đúng 10 phút để triệt tiêu xao nhãng ➔ 2. Dừng lại ngay lập tức khi hết giờ để không kích thích hạch amygdala tiết cortisol ➔ 3. Hít thở sâu bằng bụng 4 nhịp để đưa oxy lên não, đưa sóng não về Alpha lưu trữ ký ức.",
@@ -189,6 +198,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['PHYS-02', 'PHYS-07', 'PHYS-04'],
                 "label": "TRỤ 1: BẢO TOÀN NĂNG LƯỢNG & KHỐI LƯỢNG TỚI HẠN",
                 "sub_modes": "(1) Định luật 1 Newton (Quán tính) + (2) Bảo toàn Năng lượng Lavoisier + (3) Khối lượng Tới hạn (Critical Mass)",
                 "principle": "1. Một vật đứng yên hoặc đang chuyển động sẽ giữ nguyên trạng thái nếu không có ngoại lực ➔ 2. Năng lượng không tự sinh ra, muốn có thành quả bắt buộc phải bỏ công tương ứng ➔ 3. Phải tích tụ đủ khối lượng tới hạn mới kích hoạt được phản ứng dây chuyền bùng nổ.",
@@ -199,6 +209,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['PHYS-08', 'PHYS-09', 'PHYS-05'],
                 "label": "TRỤ 2: MA SÁT, ĐỘ NHỚT & VẬN TỐC THOÁT",
                 "sub_modes": "(1) Ma sát & Độ nhớt (Friction & Viscosity) + (2) Lực cản Môi trường (Drag) + (3) Vận tốc Thoát ly (Escape Velocity)",
                 "principle": "1. Mọi chuyển động nội tại đều sinh ma sát làm hao tổn năng lượng quý giá ➔ 2. Càng di chuyển nhanh lực cản môi trường càng tăng theo cấp số nhân ➔ 3. Chỉ có gia tốc cực đại vượt qua vận tốc thoát mới không bị trọng trường cũ hút ngược rơi lại đáy vực.",
@@ -209,6 +220,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['PHYS-01', 'PHYS-06', 'PHYS-14'],
                 "label": "TRỤ 3: ĐÒN BẨY ACSIMET & CỘNG HƯỞNG",
                 "sub_modes": "(1) Nguyên lý Đòn bẩy Acsimet + (2) Điểm tựa Vững chắc (Fulcrum) + (3) Tần số Dao động Cộng hưởng (Resonance)",
                 "principle": "1. Cánh tay đòn càng dài lực nâng càng nhân lên gấp bội ➔ 2. Phải có điểm tựa bất di bất dịch thì đòn bẩy mới phát huy tác dụng ➔ 3. Tác động một lực nhỏ nhưng đúng tần số dao động tự nhiên sẽ làm rung chuyển cả hệ thống khổng lồ.",
@@ -242,6 +254,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['PHYS-03', 'PHYS-15', 'PHYS-12'],
                 "label": "TRỤ 1: ENTROPY & QUY LUẬT SUY THOÁI TẤT YẾU",
                 "sub_modes": "(1) Định luật 2 Nhiệt động học (Entropy) + (2) Độ không Tuyệt đối (Absolute Zero) + (3) Tản tán Năng lượng (Dissipation)",
                 "principle": "1. Mọi hệ thống không được nạp năng lượng bảo dưỡng đều tất yếu tự phân rã về hỗn loạn ➔ 2. Tại độ không tuyệt đối mọi dao động phân tử mới hoàn toàn đóng băng ➔ 3. Năng lượng hữu ích luôn bị tản tán ra môi trường dưới dạng nhiệt thải vô ích.",
@@ -252,6 +265,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['PHYS-10', 'PHYS-11', 'PHYS-13'],
                 "label": "TRỤ 2: DÒNG CHẢY NHIỆT & BIẾN ĐIỆU SÓNG DOPPLER",
                 "sub_modes": "(1) Gradient Thế năng (Dòng nhiệt) + (2) Cân bằng Nhiệt động (Thermal Equilibrium) + (3) Hiệu ứng Sóng Doppler",
                 "principle": "1. Nhiệt lượng chỉ tự truyền từ nơi nhiệt độ cao sang nơi nhiệt độ thấp ➔ 2. Dòng chảy sẽ ngừng lại khi hai bên đạt trạng thái cân bằng triệt tiêu ➔ 3. Tần số sóng bạn nhận được phụ thuộc vào chuyển động tương đối giữa bạn và nguồn phát.",
@@ -262,6 +276,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['PHYS-05', 'PHYS-06', 'PHYS-04'],
                 "label": "TRỤ 3: BƯỚC NHẢY CHUYỂN PHA TẠI 100°C",
                 "sub_modes": "(1) Nhiệt dung Tiềm ẩn (Latent Heat) + (2) Ngưỡng Chuyển pha (Phase Transition) + (3) Năng lượng Hoạt hóa Bùng nổ",
                 "principle": "1. Hấp thụ năng lượng liên tục mà không thấy tăng nhiệt độ gọi là tích lũy nhiệt tiềm ẩn ➔ 2. Đúng 100°C chất lỏng bùng nổ chuyển hóa toàn diện thành thể khí ➔ 3. Vượt qua năng lượng hoạt hóa sẽ giải phóng sức mạnh kéo chuyển cả đoàn tàu.",
@@ -298,6 +313,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['BIO-02', 'BIO-03', 'BIO-06'],
                 "label": "TRỤ 1: HỐC SINH THÁI & CÂN BẰNG NỘI MÔI",
                 "sub_modes": "(1) Hốc sinh thái Độc quyền (Niche) + (2) Cân bằng Nội môi (Homeostasis) + (3) Sức chứa Môi trường (Carrying Capacity)",
                 "principle": "1. Tìm và chiếm lĩnh một ngóc ngách độc quyền không bị cạnh tranh trực diện ➔ 2. Cơ thể liên tục phản hồi để giữ vững các chỉ số sinh hóa sống còn ➔ 3. Không một quần thể nào có thể tăng trưởng vượt quá sức chứa tài nguyên của môi trường.",
@@ -308,6 +324,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['BIO-01', 'BIO-04', 'BIO-05'],
                 "label": "TRỤ 2: NỮ HOÀNG ĐỎ & CHỌN LỌC TỰ NHIÊN",
                 "sub_modes": "(1) Chọn lọc Tự nhiên Darwin + (2) Áp lực Tiến hóa Đào thải + (3) Cuộc đua Nữ hoàng Đỏ (Red Queen)",
                 "principle": "1. Kẻ thích nghi tốt nhất với sự thay đổi của môi trường sẽ sống sót truyền lại gen ➔ 2. Khi môi trường biến đổi, những cá thể mang đặc tính lỗi thời bị tuyệt diệt không thương tiếc ➔ 3. Phải chạy hết tốc lực chỉ để giữ nguyên vị trí trong cuộc đua sinh tồn với đối thủ.",
@@ -318,6 +335,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['BIO-08', 'BIO-07', 'BIO-10'],
                 "label": "TRỤ 3: ĐỘT BIẾN NGẪU NHIÊN & BẮT CHƯỚC SINH HỌC",
                 "sub_modes": "(1) Đột biến Ngẫu nhiên (Random Mutation) + (2) Bắt chước Sinh học (Biomimicry) + (3) Đa dạng Di truyền Phòng hộ",
                 "principle": "1. Dành một phần nhỏ tài nguyên cho các thử nghiệm sai lệch ngẫu nhiên để tìm ra đột phá ➔ 2. Học hỏi và sao chép các cấu trúc đã được tự nhiên thử nghiệm thành công 4 tỷ năm ➔ 3. Đa dạng hóa nguồn gen để không bị một căn bệnh duy nhất quét sạch toàn bộ giống loài.",
@@ -354,6 +372,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['MATH-05', 'MATH-07', 'MATH-08'],
                 "label": "TRỤ 1: ĐẢO NGƯỢC XÁC SUẤT & PHÂN PHỐI ĐUÔI BÉO",
                 "sub_modes": "(1) Tư duy Đảo ngược Jacobi + (2) Phân phối Chuẩn Gaussian vs Đuôi béo Mandelbrot + (3) Quy luật Số lớn (Law of Large Numbers)",
                 "principle": "1. Tìm tất cả các cách để cháy sạch tài khoản rồi loại bỏ chúng hoàn toàn ➔ 2. Đừng tin vào đồ thị hình chuông bình yên, thế giới thực bị thống trị bởi thiên nga đen ở phần đuôi béo ➔ 3. Kết quả ngắn hạn có thể do may rủi, nhưng số lượng mẫu đủ lớn sẽ phơi bày bản chất kỳ vọng thực sự.",
@@ -364,6 +383,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['MATH-03', 'MATH-06', 'MATH-11'],
                 "label": "TRỤ 2: CẬP NHẬT BAYES & HỒI QUY TRUNG BÌNH",
                 "sub_modes": "(1) Xác suất Tiên nghiệm (Prior Probability) + (2) Cập nhật Dữ liệu Mới Bayes (Posterior) + (3) Hồi quy về Giá trị Trung bình (Regression to the Mean)",
                 "principle": "1. Bắt đầu bằng xác suất nền tảng khách quan trong lịch sử ➔ 2. Lập tức điều chỉnh niềm tin khi xuất hiện bằng chứng dữ liệu mới ➔ 3. Sau một chuỗi kết quả cực đoan bất thường, mọi thứ tất yếu sẽ quay trở về mức trung bình dài hạn.",
@@ -374,6 +394,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['MATH-01', 'MATH-04', 'MATH-02'],
                 "label": "TRỤ 3: LÃI KÉP KỲ DIỆU & CÔNG THỨC KELLY",
                 "sub_modes": "(1) Lãi kép Lũy thừa (Compound Growth) + (2) Định luật Pareto 80/20 + (3) Tiêu chuẩn Đặt cược Kelly (Kelly Criterion)",
                 "principle": "1. Tích lũy liên tục không ngắt quãng biến tăng trưởng chậm ban đầu thành đường dốc đứng khổng lồ ➔ 2. 80% kết quả đột phá chỉ đến từ 20% nguyên nhân cốt lõi ➔ 3. Khi nắm chắc lợi thế toán học dương, chỉ đặt cược theo tỷ lệ phần trăm tối ưu của công thức Kelly để không bao giờ cháy túi.",
@@ -410,6 +431,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['ECON-02', 'ECON-08', 'PSY-14'],
                 "label": "TRỤ 1: CHI PHÍ CƠ HỘI & CHI PHÍ CHÌM",
                 "sub_modes": "(1) Chi phí Cơ hội (Opportunity Cost) + (2) Hiệu dụng Biên Giảm dần (Diminishing Marginal Utility) + (3) Bẫy Chi phí Chìm (Sunk Cost Fallacy)",
                 "principle": "1. Giá trị thực của một quyết định là giá trị của lựa chọn tốt nhất bị bỏ qua ➔ 2. Càng tiêu thụ nhiều một món đồ, mức độ thỏa mãn của mỗi đơn vị tiếp theo càng tụt dốc ➔ 3. Tiền bạc và thời gian đã mất trong quá khứ không thể lấy lại và không được phép chi phối quyết định tương lai.",
@@ -420,6 +442,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['ECON-01', 'ECON-15', 'PSY-04'],
                 "label": "TRỤ 2: QUY LUẬT CUNG CẦU & ĐỘNG LỰC TƯ LỢI",
                 "sub_modes": "(1) Cân bằng Cung Cầu Thị trường + (2) Tín hiệu Giá cả (Price Mechanism) + (3) Động lực Khen thưởng Munger (Incentive Bias)",
                 "principle": "1. Nguồn cung khan hiếm mà nhu cầu bùng nổ thì giá tất yếu leo thang ➔ 2. Giá cả là tín hiệu dẫn đường điều phối tài nguyên không cần ai chỉ đạo ➔ 3. Thiết kế sai cơ chế thưởng phạt sẽ biến những người tử tế nhất thành những kẻ phá hoại tồi tệ nhất.",
@@ -430,6 +453,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['ECON-06', 'ECON-05', 'ECON-09'],
                 "label": "TRỤ 3: PHÁ HỦY SÁNG TẠO & LỢI THẾ SO SÁNH",
                 "sub_modes": "(1) Phá hủy Sáng tạo Schumpeter + (2) Lợi thế So sánh Ricardo (Comparative Advantage) + (3) Chuyên môn hóa Lao động",
                 "principle": "1. Đổi mới công nghệ tất yếu nghiền nát và chôn vùi các mô hình kinh doanh cũ lỗi thời ➔ 2. Hãy chỉ tập trung làm việc bạn làm với chi phí cơ hội thấp nhất và trao đổi phần còn lại ➔ 3. Chia nhỏ quy trình và chuyên môn hóa sâu giúp năng suất tăng gấp hàng nghìn lần.",
@@ -463,6 +487,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['ECON-07', 'ECON-11', 'ECON-12'],
                 "label": "TRỤ 1: CON HÀO KINH TẾ & CHI PHÍ CHUYỂN ĐỔI",
                 "sub_modes": "(1) Con hào Kinh tế Buffett (Economic Moat) + (2) Chi phí Chuyển đổi (Switching Costs) + (3) Tài sản Vô hình Độc quyền",
                 "principle": "1. Pháo đài kinh doanh phải có con hào sâu bảo vệ lợi nhuận biên trước sự tấn công của đối thủ ➔ 2. Làm cho khách hàng cảm thấy việc rời bỏ sản phẩm gây tổn thất đau đớn đến mức không dám chuyển đổi ➔ 3. Sở hữu bằng sáng chế, giấy phép độc quyền hoặc thương hiệu ăn sâu vào tiềm thức.",
@@ -473,6 +498,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['ECON-04', 'ECON-10', 'ECON-14'],
                 "label": "TRỤ 2: HIỆU ỨNG MẠNG LƯỚI & HIỆU ỨNG BÁNH ĐÀ",
                 "sub_modes": "(1) Hiệu ứng Mạng lưới Metcalfe (Network Effects) + (2) Bánh đà Tự tăng trưởng (Flywheel Effect) + (3) Cạnh tranh Độc quyền Nhóm",
                 "principle": "1. Càng có nhiều người tham gia mạng lưới thì giá trị của nó càng tăng theo hàm số mũ ➔ 2. Đẩy bánh đà quay những vòng đầu tiên cực nhọc nhưng sau đó nó sẽ tự tích lũy động lượng quay tít ➔ 3. Kẻ thống lĩnh mạng lưới sẽ tạo ra vị thế độc quyền tự nhiên nuốt chửng thị phần.",
@@ -483,6 +509,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['ECON-03', 'ECON-13', 'PSY-12'],
                 "label": "TRỤ 3: QUY MÔ KINH TẾ & CHI PHÍ BIÊN = 0",
                 "sub_modes": "(1) Lợi thế Kinh tế nhờ Quy mô (Economies of Scale) + (2) Chi phí Biên tiệm cận 0 (Zero Marginal Cost) + (3) Kẻ Thắng Nuốt Trọn (Winner-Takes-All)",
                 "principle": "1. Sản lượng càng khổng lồ thì chi phí cố định trên mỗi đơn vị càng giảm sâu không đối thủ nào đọ nổi ➔ 2. Khi nhân bản thêm 1 sản phẩm mới tốn chi phí bằng 0, biên lợi nhuận sẽ bùng nổ vô tận ➔ 3. Thị trường kỹ thuật số luôn nghiêng về quy luật kẻ số một chiếm lĩnh gần như toàn bộ miếng bánh.",
@@ -519,6 +546,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['PSY-02', 'PSY-07', 'PSY-14'],
                 "label": "TRỤ 1: ÁC CẢM MẤT MÁT & NEO GIÁ TÂM LÝ",
                 "sub_modes": "(1) Ác cảm Mất mát Kahneman (Loss Aversion) + (2) Hiệu ứng Mỏ neo (Anchoring Effect) + (3) Hiệu ứng Sở hữu (Endowment Effect)",
                 "principle": "1. Nỗi đau khi mất 100 đô la tác động mạnh gấp đôi niềm vui kiếm được 100 đô la ➔ 2. Não bộ tự động bám chặt vào con số đầu tiên nhìn thấy làm chuẩn mực so sánh lệch lạc ➔ 3. Khi đã nắm giữ một món đồ trong tay, con người vô thức định giá nó cao hơn nhiều lần giá trị thị trường thực tế.",
@@ -529,6 +557,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['PSY-03', 'PSY-08', 'PSY-01'],
                 "label": "TRỤ 2: THIÊN KIẾN XÁC NHẬN & TÂM LÝ BẦY CỪU",
                 "sub_modes": "(1) Thiên kiến Xác nhận (Confirmation Bias) + (2) Bằng chứng Xã hội (Social Proof) + (3) Thiên kiến Sẵn có (Availability Bias)",
                 "principle": "1. Não bộ chỉ lọc và thu nhận thông tin trùng khớp với định kiến có sẵn và tự động mù lòa trước bằng chứng phản bác ➔ 2. Khi hoang mang không biết làm gì, con người nhắm mắt bắt chước hành vi của số đông ➔ 3. Đánh giá xác suất của một sự việc dựa trên mức độ dễ dàng hồi tưởng lại các ký ức gần đây nhất.",
@@ -539,6 +568,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['PSY-04', 'PSY-06', 'PSY-05'],
                 "label": "TRỤ 3: CỘNG HƯỞNG TÂM LÝ LOLLAPALOOZA & BẪY NHẤT QUÁN",
                 "sub_modes": "(1) Bẫy Cam kết & Nhất quán (Commitment & Consistency) + (2) Hiệu ứng Uy quyền Giả tạo (Authority Bias) + (3) Cơn Lốc Lollapalooza Charlie Munger",
                 "principle": "1. Khi đã công khai tuyên bố một quan điểm, con người sẽ ngoan cố bảo vệ nó đến cùng dù biết mình sai ➔ 2. Dễ dàng phục tùng một mệnh lệnh phi lý nếu kẻ ra lệnh khoác lên mình chiếc áo choàng chuyên gia uy quyền ➔ 3. Khi nhiều thiên kiến tâm lý cùng bùng phát đồng thời theo một hướng, lý trí bị xóa sổ hoàn toàn tạo nên cơn điên tập thể.",
@@ -575,6 +605,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
         "chunks": [
             {
                 "id": "chunk_1",
+                "model_ids": ['SYS-01', 'SYS-02', 'SYS-06'],
                 "label": "TRỤ 1: VÒNG LẶP PHẢN HỒI & ĐỘ TRỄ HỆ THỐNG",
                 "sub_modes": "(1) Vòng lặp Phản hồi Dương khuếch đại (Reinforcing Loop) + (2) Vòng lặp Phản hồi Âm cân bằng (Balancing Loop) + (3) Độ trễ Hệ thống (System Delays)",
                 "principle": "1. Vòng lặp dương làm gia tăng liên tục dẫn đến bùng nổ theo cấp số nhân hoặc sụp đổ dây chuyền ➔ 2. Vòng lặp âm hoạt động như chiếc van điều nhiệt tự động kéo hệ thống về trạng thái cân bằng ổn định ➔ 3. Tác động can thiệp hôm nay nhưng hậu quả thường chỉ xuất hiện sau một khoảng trễ thời gian dài gây ảo tưởng kiểm soát.",
@@ -585,6 +616,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_2",
+                "model_ids": ['SYS-03', 'SYS-05', 'SYS-07'],
                 "label": "TRỤ 2: NÚT THẮT CỔ CHAI & ĐIỂM LỖI ĐƠN LẺ",
                 "sub_modes": "(1) Thuyết Điểm nghẽn Goldratt (Theory of Constraints) + (2) Điểm Lỗi Đơn lẻ (Single Point of Failure - SPOF) + (3) Cân bằng Động Le Chatelier",
                 "principle": "1. Năng lực của toàn bộ chuỗi sản xuất chỉ bằng năng lực của mắt xích thắt cổ chai yếu nhất ➔ 2. Một hệ thống không có phương án dự phòng sẽ sụp đổ hoàn toàn nếu mắt xích duy nhất (SPOF) gặp sự cố ➔ 3. Khi một hệ thống cân bằng bị tác động ngoại lực, nó sẽ tự chuyển dịch theo hướng làm giảm thiểu tác động của ngoại lực đó.",
@@ -595,6 +627,7 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
             },
             {
                 "id": "chunk_3",
+                "model_ids": ['SYS-04', 'SYS-10', 'SYS-12'],
                 "label": "TRỤ 3: BIÊN AN TOÀN & THIẾT KẾ DỰ PHÒNG DƯ THỪA",
                 "sub_modes": "(1) Biên An toàn Graham (Margin of Safety) + (2) Kỹ thuật Dự phòng Dư thừa (Redundancy Engineering) + (3) Tính Chống Mong manh Taleb (Antifragile)",
                 "principle": "1. Luôn chừa lại một khoảng đệm an toàn đủ lớn để hấp thụ sai số của các giả định ➔ 2. Luôn có hệ thống song song thứ hai sẵn sàng tiếp quản khi hệ thống thứ nhất chết ➔ 3. Không chỉ chống chọi với biến động mà còn học cách mạnh mẽ và tiến hóa hơn sau những cú sốc và hỗn loạn.",

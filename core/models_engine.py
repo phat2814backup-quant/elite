@@ -89,3 +89,65 @@ def load_all_principles() -> List[Dict[str, Any]]:
 
 def get_farrow_principles_grouped() -> Dict[str, List[Dict[str, Any]]]:
     return get_farrow_models_grouped()
+
+
+_MODELS_BY_ID: Optional[Dict[str, Dict[str, Any]]] = None
+
+def get_all_models_map() -> Dict[str, Dict[str, Any]]:
+    """Tải và lưu cache từ điển mô hình đầy đủ trường chi tiết GMM theo ID."""
+    global _MODELS_BY_ID
+    if _MODELS_BY_ID is not None:
+        return _MODELS_BY_ID
+    
+    mapping: Dict[str, Dict[str, Any]] = {}
+    
+    # 1. Đọc từ core_mental_models.json (chứa đầy đủ action_steps, boundary_conditions, real_world_case)
+    core_path = os.path.join(DATA_DIR, "core_mental_models.json")
+    if os.path.exists(core_path):
+        try:
+            with open(core_path, "r", encoding="utf-8") as f:
+                core_models = json.load(f).get("models", [])
+                for m in core_models:
+                    if "id" in m:
+                        mapping[m["id"]] = m
+        except Exception:
+            pass
+
+    # 2. Đọc bổ sung từ unified_farrow_models.json nếu có ID mới
+    unified = load_unified_farrow_catalog()
+    for item in unified:
+        mid = item.get("id")
+        if mid and mid not in mapping:
+            mapping[mid] = item
+            
+    _MODELS_BY_ID = mapping
+    return _MODELS_BY_ID
+
+
+def get_model_full_detail(model_id: str) -> Optional[Dict[str, Any]]:
+    """Lấy chi tiết đầy đủ của một mô hình theo ID (gồm cả khung GMM chuyên sâu nếu có)."""
+    m_map = get_all_models_map()
+    return m_map.get(model_id)
+
+
+def get_models_for_topic_chunk(chunk: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Lấy danh sách 3 mô hình tương ứng cho 1 chunk (Trụ) của chủ đề Farrow."""
+    model_ids = chunk.get("model_ids", [])
+    models = []
+    for mid in model_ids:
+        m = get_model_full_detail(mid)
+        if m:
+            models.append(m)
+        else:
+            models.append({
+                "id": mid,
+                "name_vi": mid,
+                "name_en": "",
+                "tier": 1,
+                "first_principle": chunk.get("principle", ""),
+                "elite_leverage": "",
+                "trigger_question": chunk.get("trigger_question", ""),
+                "inversion_trap": "",
+            })
+    return models
+
