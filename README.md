@@ -1,39 +1,45 @@
-﻿# ⚡ Elite Farrow 10-Minute Engine (v2)
+# ⚡ Elite Farrow 10-Minute Engine (v2.1)
 
 > **Hệ thống Nén Tri Thức & Phản Xạ 10 Phút theo Phương pháp Kỷ lục gia Guinness Trí nhớ Dave Farrow.**
+> Hợp nhất: 3 Trụ Cột Trinity, 152 Mô Hình & Nguyên Lý Tinh Hoa, Tự Động Xoay Tua API Keys & Lâu Đài Ký Ức.
 
 ---
 
 ## 🌟 Giới Thiệu
 
-Phiên bản trước đây của hệ thống (*Elite Thinking v1*) được thiết kế theo mô hình bách khoa toàn thư với hàng chục bài luận, case study và tài liệu dài. Tuy nhiên, theo khoa học não bộ từ Dave Farrow (người 2 lần lập Kỷ lục Guinness nhớ 3.068 quân bài), não bộ con người có **dung lượng pin rất nhỏ**. Việc đọc tài liệu dền dứ hàng tiếng đồng hồ chỉ làm não kiệt sức và mau quên.
+Phiên bản trước đây của hệ thống (*Elite Thinking v1*) được thiết kế theo mô hình bách khoa toàn thư với hàng chục bài luận, case study và tài liệu dài rườm rà. Theo khoa học não bộ từ Dave Farrow (người 2 lần lập Kỷ lục Guinness nhớ 3.068 quân bài), não bộ con người có **dung lượng pin rất nhỏ**. Việc đọc tài liệu dền dứ hàng tiếng đồng hồ chỉ làm não kiệt sức, kích hoạt hạch hạnh nhân tiết cortisol và mau quên.
 
-**Elite Farrow Edition (v2)** được xây dựng lại hoàn toàn từ con số 0, nén toàn bộ **88 Mô Hình Hạt Nhân & 100 Nguyên Lý Khởi Thủy** về đúng:
+**Elite Farrow Edition (v2.1)** giải quyết triệt để vấn đề này:
 1. **Quy tắc số 3 (Rule of 3 Chunking):** Mọi tri thức khổng lồ bắt buộc phải nén về đúng 3 khối hạt nhân (**SOI GỐC -> ĐỌC DÒNG -> RA ĐÒN**).
-2. **Thẻ Bài Farrow 10 Giây:** Mỗi mô hình/nguyên lý chỉ giữ lại: Nguyên lý 1 dòng, Phản xạ kích hoạt 5 giây, Cạm bẫy đảo ngược cần tránh, và Đòn bẩy tinh hoa.
+2. **Hợp Nhất 152 Mô Hình & Định Luật Tinh Hoa (Unified Farrow Latticework):**
+   - Hợp nhất toàn bộ 88 mô hình Munger và 64 định luật khoa học khởi thủy thành một danh mục duy nhất.
+   - Loại bỏ 100% mục rỗng/lỗi, gộp các mục tương đồng (Cung cầu, Động lực, Chi phí cơ hội...).
+   - Mỗi thẻ bài chuẩn Farrow 10 giây: Bản chất 1 câu, Phản xạ 5 giây, Bẫy đảo ngược/Khả bác và Đòn bẩy hành động.
 3. **Lâu Đài Ký Ức (Spatial Memory Palace):** Gắn 3 khối hạt nhân vào 3 mỏ neo phòng quen thuộc (*Cửa ra vào* -> *Màn hình* -> *Bàn ghế*) bằng các hình ảnh kỳ quặc, phi lý gây sốc.
-4. **Chạy nước rút 10 Phút (10-Minute Focus Sprint):** Ép xung tốc độ x3 để triệt tiêu xao nhãng. Hỗ trợ chế độ rút ngẫu nhiên 3 thẻ Farrow để luyện não hàng ngày.
-5. **Thở bụng (Belly Breathing Reset):** Hạ cortisol, kích hoạt hồi hải mã lưu trữ ký ức dài hạn.
+4. **Chạy Nước Rút 10 Phút (10-Minute Focus Sprint):** Ép xung tốc độ x3 để triệt tiêu xao nhãng. Hỗ trợ chế độ rút ngẫu nhiên 3 thẻ Farrow Tarot (1 Soi Gốc, 1 Đọc Dòng, 1 Ra Đòn) để rèn luyện tư duy thực chiến.
+5. **Máy Ép AI 1-Click với Cơ Chế Xoay Tua Đa Khóa (Multi-Key Rotation):**
+   - Tự động nạp toàn bộ danh sách `GOOGLE_API_KEY`, `GEMINI_API_KEY_1` đến `GEMINI_API_KEY_8` từ file cấu hình `.env`.
+   - Cơ chế tự động xoay tua key thông minh nếu gặp giới hạn hạn ngạch hoặc lỗi kết nối.
+6. **Thở Bụng Phục Hồi (Belly Breathing Reset):** Hạ cortisol, đưa sóng não về trạng thái Alpha để hồi hải mã lưu trữ ký ức dài hạn.
 
 ---
 
-## 🏛️ Kiến Trúc Ứng Dụng (6 Phòng Chức Năng Tinh Hoa)
+## 🏛️ Kiến Trúc 5 Phòng Chức Năng
 
 1. **🏛️ Lâu Đài Ký Ức (The 3 Trinity):**
-   - Xem các chủ đề nén sẵn (Bộ 3 Tư Duy Tinh Hoa, Bản Chất Vàng XAU/USD, Kỹ Thuật Học Siêu Tốc).
+   - Xem các chủ đề nén sẵn (Bộ 3 Tư Duy Tinh Hoa, Bản Chất Vàng XAU/USD, Nghệ Thuật Đảo Ngược Sinh Tử).
    - Đấu trường phản xạ 5 giây kiểm tra tư duy.
-2. **🕸️ 88 Mô Hình Hạt Nhân (Farrow Latticework):**
-   - 88 mô hình Munger được phân loại vào 3 Trụ Cột Farrow: Soi Gốc, Đọc Dòng, Ra Đòn.
-   - Bộ lọc siêu tốc: ⭐ 25 Siêu hạt nhân Tier 1 (Pareto 80/20) & Tìm kiếm theo từ khóa.
-3. **📚 Thư Viện Nguyên Lý (100 First Principles):**
-   - 100 định luật khoa học khởi thủy từ Vật lý, Sinh học, Hóa học, Toán học được nén về bản chất đời thường và tiêu chuẩn khả bác.
-4. **⏱️ Phòng Ép Xung 10 Phút (Focus Sprint):**
+2. **🕸️ Ma Trận Mô Hình & Nguyên Lý Tinh Hoa (Unified Latticework):**
+   - 152 thẻ bài tinh hoa được phân loại vào 3 Trụ Cột: 🚪 58 Soi Gốc, 🖥️ 62 Đọc Dòng, 🪑 32 Ra Đòn.
+   - Bộ lọc đa năng: ⭐ Siêu hạt nhân Tier 1 (Pareto 80/20), Cấp 2 & 3, Nguyên lý Khoa học, Mô hình Tư duy.
+   - Tìm kiếm nhanh tức thì theo từ khóa.
+3. **⏱️ Phòng Ép Xung 10 Phút (Focus Sprint):**
    - Quy trình 4 chặng chuẩn Dave Farrow có đồng hồ đếm ngược trực quan.
-   - Chế độ **"🎲 Rút 3 Thẻ Ngẫu Nhiên" (Bộ 3 Farrow Tarot)**: Rút 1 thẻ Soi Gốc, 1 thẻ Đọc Dòng, 1 thẻ Ra Đòn để chạy sprint 10 phút.
-5. **⚡ Máy Ép Farrow 1-Click (Universal Text Compressor):**
-   - Dán bất kỳ tài liệu dài hàng chục trang nào vào -> AI tự động nghiền nát và phụt ra đúng 3 khối hạt nhân + hình ảnh dị biệt + 1 hành động bất đối xứng.
-6. **🫁 Trạm Thở Bụng Sạc Pin:**
-   - Đồng hồ dẫn nhịp thở Box Breathing 4-4-4-4 sạc lại pin não.
+   - Chế độ **"🎲 Rút 3 Thẻ Ngẫu Nhiên" (Bộ 3 Farrow Tarot)**: Rút 1 thẻ Soi Gốc, 1 thẻ Đọc Dòng, 1 thẻ Ra Đòn.
+4. **⚡ Máy Ép Farrow 1-Click (AI Compressor):**
+   - Dán tài liệu dài -> AI tự động nghiền nát và trích xuất đúng 3 khối hạt nhân + hình ảnh dị biệt + 1 hành động bất đối xứng.
+5. **🫁 Trạm Thở Bụng Sạc Pin:**
+   - Đồng hồ dẫn nhịp thở Box Breathing 4-4-4-4 sạc lại 100% pin não.
 
 ---
 
@@ -44,15 +50,27 @@ Phiên bản trước đây của hệ thống (*Elite Thinking v1*) được th
 pip install -r requirements.txt
 ```
 
-### 2. Chạy ứng dụng Streamlit:
+### 2. Cấu hình biến môi trường:
+File `.env` nằm tại thư mục gốc của dự án, hỗ trợ tự động xoay tua nhiều key:
+```env
+GOOGLE_API_KEY=your_key_here
+GEMINI_API_KEY_1=key_1
+GEMINI_API_KEY_2=key_2
+...
+```
+
+### 3. Chạy ứng dụng Streamlit:
 ```bash
 streamlit run app.py
 ```
 
 ---
 
-## 📦 Triển Khai Lên Streamlit Cloud
-1. Đẩy code lên GitHub bằng script `push_to_github.bat`.
-2. Truy cập [share.streamlit.io](https://share.streamlit.io/).
-3. Chọn Repository `phat2814backup-quant/elite`, branch `main`, main file `app.py`.
-4. Điền biến môi trường `GEMINI_API_KEY` trong mục Advanced Settings (Secrets) nếu muốn dùng AI Compressor tự động.
+## 📦 Triển Khai Lên GitHub & Streamlit Cloud
+1. Sử dụng script `push_to_github.bat` hoặc lệnh git:
+   ```bash
+   git add .
+   git commit -m "Update Elite Farrow Engine v2.1"
+   git push origin main
+   ```
+2. Truy cập [share.streamlit.io](https://share.streamlit.io/) để kết nối repository `phat2814backup-quant/elite`.

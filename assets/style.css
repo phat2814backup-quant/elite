@@ -1,4 +1,4 @@
-﻿/* Elite Farrow Minimalist Styling */
+/* Elite Farrow Minimalist Styling */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
 html, body, [class*="css"] {
@@ -96,6 +96,16 @@ html, body, [class*="css"] {
     border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 700;
+}
+
+.badge-source {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
 }
 
 /* Compact Model Cards */

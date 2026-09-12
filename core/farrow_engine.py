@@ -1,11 +1,23 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Động Cơ Xử Lý Nén Tri Thức & Lâu Đài Ký Ức Dave Farrow (Farrow Engine)
+Hỗ trợ: Nén Rule of 3, Xoay tua API Keys từ .env, Dự phòng Heuristic thông minh.
 """
 
 import os
 import json
 from typing import Dict, Any, Optional, List
+
+# Tự động nạp cấu hình từ .env
+try:
+    import dotenv
+    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+    if os.path.exists(env_path):
+        dotenv.load_dotenv(dotenv_path=env_path)
+    else:
+        dotenv.load_dotenv()
+except ImportError:
+    pass
 
 try:
     import google.generativeai as genai
@@ -57,6 +69,35 @@ BẮT BUỘC TRẢ VỀ ĐỊNH DẠNG JSON HỢP LỆ (KHÔNG THÊM BẤT KỲ 
 }
 """
 
+
+def get_all_gemini_api_keys() -> List[str]:
+    """Thu thập toàn bộ danh sách Gemini API keys từ biến môi trường và .env."""
+    keys = []
+    # Primary keys
+    for var_name in ["GOOGLE_API_KEY", "GEMINI_API_KEY"]:
+        val = os.getenv(var_name, "").strip()
+        if val and val not in keys:
+            keys.append(val)
+            
+    # Numbered keys (GEMINI_API_KEY_1 đến GEMINI_API_KEY_10)
+    for i in range(1, 11):
+        val = os.getenv(f"GEMINI_API_KEY_{i}", "").strip()
+        if val and val not in keys:
+            keys.append(val)
+            
+    return keys
+
+
+def get_api_key_status() -> Dict[str, Any]:
+    """Trả về trạng thái các API key phục vụ giao diện hiển thị."""
+    keys = get_all_gemini_api_keys()
+    return {
+        "count": len(keys),
+        "has_keys": len(keys) > 0,
+        "active_hint": f"{len(keys)} khóa API từ .env sẵn sàng tự động xoay tua" if keys else "Chưa cấu hình API Key trong .env"
+    }
+
+
 def compress_with_farrow_ai(
     raw_text: str, 
     api_key: Optional[str] = None, 
@@ -64,36 +105,48 @@ def compress_with_farrow_ai(
 ) -> Dict[str, Any]:
     """
     Sử dụng Gemini AI để nén văn bản thô thành cấu trúc Dave Farrow 3 Chunks.
-    Nếu không có API key hoặc lỗi mạng, tự động kích hoạt bộ bóc tách Heuristic.
+    Hỗ trợ tự động xoay tua qua danh sách API keys nếu gặp lỗi hạn ngạch.
+    Nếu không có key hoặc mạng lỗi hoàn toàn, tự động kích hoạt bộ bóc tách Heuristic.
     """
     cleaned = raw_text.strip()
     if not cleaned:
         return _heuristic_fallback("Trống", "Vui lòng nhập nội dung cần nén.")
 
-    key = api_key or os.getenv("GEMINI_API_KEY", "")
-    if key and genai is not None:
-        try:
-            genai.configure(api_key=key)
-            model = genai.GenerativeModel(
-                model_name=model_name,
-                system_instruction=FARROW_SYSTEM_PROMPT,
-                generation_config={"response_mime_type": "application/json"}
-            )
-            prompt = f"Nén tài liệu sau đây thành 3 khối Farrow:\n\n\"\"\"\n{cleaned[:8000]}\n\"\"\""
-            response = model.generate_content(prompt, request_options={"timeout": 25})
-            if response and response.text:
-                t = response.text.strip()
-                if t.startswith("```"):
-                    lines = t.splitlines()
-                    if len(lines) >= 2 and lines[-1].startswith("```"):
-                        t = "\n".join(lines[1:-1]).strip()
-                data = json.loads(t)
-                if isinstance(data, dict) and "chunks" in data and len(data["chunks"]) == 3:
-                    return data
-        except Exception:
-            pass
+    # Xây dựng danh sách keys để thử
+    candidate_keys = []
+    if api_key and api_key.strip():
+        candidate_keys.append(api_key.strip())
+    
+    # Nạp các keys từ .env
+    for k in get_all_gemini_api_keys():
+        if k not in candidate_keys:
+            candidate_keys.append(k)
 
-    # Heuristic fallback if AI fails or no key
+    if candidate_keys and genai is not None:
+        for idx, key in enumerate(candidate_keys):
+            try:
+                genai.configure(api_key=key)
+                model = genai.GenerativeModel(
+                    model_name=model_name,
+                    system_instruction=FARROW_SYSTEM_PROMPT,
+                    generation_config={"response_mime_type": "application/json"}
+                )
+                prompt = f"Nén tài liệu sau đây thành 3 khối Farrow:\n\n\"\"\"\n{cleaned[:8000]}\n\"\"\""
+                response = model.generate_content(prompt, request_options={"timeout": 25})
+                if response and response.text:
+                    t = response.text.strip()
+                    if t.startswith("```"):
+                        lines = t.splitlines()
+                        if len(lines) >= 2 and lines[-1].startswith("```"):
+                            t = "\n".join(lines[1:-1]).strip()
+                    data = json.loads(t)
+                    if isinstance(data, dict) and "chunks" in data and len(data["chunks"]) == 3:
+                        return data
+            except Exception as e:
+                # Nếu key này lỗi, tự động thử key tiếp theo trong danh sách xoay tua
+                continue
+
+    # Heuristic fallback if AI fails or no valid keys
     return _heuristic_fallback(cleaned[:60], cleaned)
 
 

@@ -1,7 +1,10 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
-Bộ Xử Lý 88 Mô Hình & 100 Nguyên Lý theo Chuẩn Farrow (Models & Principles Engine)
-Phân loại toàn bộ về 3 Ngăn Kéo Farrow: SOI GỐC -> ĐỌC DÒNG -> RA ĐÒN.
+Bộ Xử Lý Ma Trận Mô Hình & Nguyên Lý Tinh Hoa (Unified Farrow Latticework Engine)
+Hợp nhất 88 Mô hình & 100 Nguyên lý về 3 Trụ Cột Farrow:
+1. 🚪 SOI GỐC (First Principles, Bảo Toàn & Ranh Giới)
+2. 🖥️ ĐỌC DÒNG (Dòng Chảy, Xác Suất, Hệ Thống & Động Lực)
+3. 🪑 RA ĐÒN (Đòn Bẩy Bất Đối Xứng, Xúc Tác & Điểm Tựa)
 """
 
 import json
@@ -10,95 +13,79 @@ import random
 from typing import Dict, List, Any, Optional
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+UNIFIED_FILE = os.path.join(DATA_DIR, "unified_farrow_models.json")
 
-def load_all_mental_models() -> List[Dict[str, Any]]:
-    path = os.path.join(DATA_DIR, "core_mental_models.json")
-    if not os.path.exists(path):
-        return []
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return data.get("models", [])
-    except Exception:
-        return []
 
-def load_all_principles() -> List[Dict[str, Any]]:
-    path = os.path.join(DATA_DIR, "knowledge_base.json")
-    if not os.path.exists(path):
-        return []
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return data.get("principles", [])
-    except Exception:
-        return []
+def load_unified_farrow_catalog() -> List[Dict[str, Any]]:
+    """Tải toàn bộ danh mục mô hình & nguyên lý tinh hoa đã làm sạch và hợp nhất."""
+    if os.path.exists(UNIFIED_FILE):
+        try:
+            with open(UNIFIED_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return data.get("catalog", [])
+        except Exception:
+            pass
 
-def classify_to_farrow_pillar(item: Dict[str, Any], is_principle: bool = False) -> str:
-    """
-    Phân loại một mô hình hoặc nguyên lý vào 1 trong 3 Trụ Cột Farrow:
-    - root: Soi Gốc (Chân lý vật lý, bảo toàn, đảo ngược, ranh giới)
-    - flow: Đọc Dòng (Xác suất, phản ứng dây chuyền, động lực, tiến hóa)
-    - strike: Ra Đòn (Đòn bẩy, xúc tác, năng lượng hoạt hóa, bất đối xứng)
-    """
-    text = ""
-    if is_principle:
-        text = (
-            str(item.get("principle_name", "")) + " " +
-            str(item.get("domain", "")) + " " +
-            str(item.get("intuitive_summary", "")) + " " +
-            str(item.get("description", ""))
-        ).lower()
-    else:
-        text = (
-            str(item.get("name_vi", "")) + " " +
-            str(item.get("name_en", "")) + " " +
-            str(item.get("pillar", "")) + " " +
-            str(item.get("first_principle", "")) + " " +
-            str(item.get("trigger_question", ""))
-        ).lower()
+    # Fallback to core_mental_models.json if unified file is missing
+    fallback_path = os.path.join(DATA_DIR, "core_mental_models.json")
+    if os.path.exists(fallback_path):
+        try:
+            with open(fallback_path, "r", encoding="utf-8") as f:
+                return json.load(f).get("models", [])
+        except Exception:
+            pass
+    return []
 
-    # Rule-based heuristics
-    strike_keywords = ["đòn bẩy", "leverage", "xúc tác", "hoạt hóa", "action", "asymmetric", "bất đối xứng", "tùy chọn", "barbell", "lò xo", "chạm ngưỡng", "tích lũy", "tăng tốc", "hooke", "quy mô", "scale"]
-    flow_keywords = ["xác suất", "bayes", "dòng", "cân bằng", "tiến hóa", "feedback", "vòng lặp", "trò chơi", "game theory", "nash", "chu kỳ", "động lực", "mạng lưới", "le chatelier", "entropy", "chaos"]
-    
-    if any(k in text for k in strike_keywords):
-        return "strike"
-    elif any(k in text for k in flow_keywords):
-        return "flow"
-    else:
-        return "root"
 
 def get_farrow_models_grouped() -> Dict[str, List[Dict[str, Any]]]:
-    """Gom nhóm 88 mô hình vào 3 Trụ Cột Farrow."""
-    models = load_all_mental_models()
+    """Gom nhóm danh mục tinh hoa vào 3 Trụ Cột Farrow: root, flow, strike."""
+    catalog = load_unified_farrow_catalog()
     grouped = {"root": [], "flow": [], "strike": []}
-    for m in models:
-        pillar = classify_to_farrow_pillar(m, is_principle=False)
-        m_copy = dict(m)
-        m_copy["farrow_pillar"] = pillar
-        grouped[pillar].append(m_copy)
+    for item in catalog:
+        pillar = item.get("farrow_pillar", "root")
+        if pillar not in grouped:
+            pillar = "root"
+        grouped[pillar].append(item)
     return grouped
 
-def get_farrow_principles_grouped() -> Dict[str, List[Dict[str, Any]]]:
-    """Gom nhóm 100 nguyên lý vào 3 Trụ Cột Farrow."""
-    principles = load_all_principles()
-    grouped = {"root": [], "flow": [], "strike": []}
-    for p in principles:
-        pillar = classify_to_farrow_pillar(p, is_principle=True)
-        p_copy = dict(p)
-        p_copy["farrow_pillar"] = pillar
-        grouped[pillar].append(p_copy)
-    return grouped
+
+def get_farrow_metrics() -> Dict[str, Any]:
+    """Trả về các chỉ số thống kê tổng quan của ma trận tinh hoa."""
+    catalog = load_unified_farrow_catalog()
+    grouped = get_farrow_models_grouped()
+    tier1 = [x for x in catalog if x.get("tier") == 1]
+    return {
+        "total": len(catalog),
+        "tier1_count": len(tier1),
+        "root_count": len(grouped["root"]),
+        "flow_count": len(grouped["flow"]),
+        "strike_count": len(grouped["strike"]),
+    }
+
 
 def draw_random_farrow_sprint_trio() -> List[Dict[str, Any]]:
-    """Rút ngẫu nhiên 3 thẻ: 1 thẻ Soi Gốc, 1 thẻ Đọc Dòng, 1 thẻ Ra Đòn để làm phiên 10 phút."""
-    models_g = get_farrow_models_grouped()
+    """Rút ngẫu nhiên 3 thẻ: 1 thẻ Soi Gốc, 1 thẻ Đọc Dòng, 1 thẻ Ra Đòn cho phiên 10 phút."""
+    grouped = get_farrow_models_grouped()
     trio = []
     for k in ["root", "flow", "strike"]:
-        pool = models_g[k]
+        pool = grouped[k]
         if pool:
-            # Ưu tiên Tier 1 nếu có
+            # Ưu tiên rút thẻ Tier 1 nếu có
             tier1_pool = [m for m in pool if m.get("tier") == 1]
             chosen = random.choice(tier1_pool if tier1_pool else pool)
             trio.append(chosen)
     return trio
+
+
+# Backward compatibility aliases
+def load_all_mental_models() -> List[Dict[str, Any]]:
+    return load_unified_farrow_catalog()
+
+
+def load_all_principles() -> List[Dict[str, Any]]:
+    catalog = load_unified_farrow_catalog()
+    return [x for x in catalog if x.get("source") in ["scientific_principle", "merged"]]
+
+
+def get_farrow_principles_grouped() -> Dict[str, List[Dict[str, Any]]]:
+    return get_farrow_models_grouped()
