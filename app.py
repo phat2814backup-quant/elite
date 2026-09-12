@@ -15,6 +15,14 @@ import textwrap
 import html
 import streamlit as st
 
+try:
+    import dotenv
+    for p in ["D:/02_HocTap/elite/.env", "D:/02_HocTap/elite_thinking/.env", ".env"]:
+        if os.path.exists(p):
+            dotenv.load_dotenv(p, override=True)
+except ImportError:
+    pass
+
 from core.knowledge_vault import (
     get_all_farrow_topics,
     get_farrow_topic_by_id,
@@ -87,19 +95,22 @@ with st.sidebar:
     
     st.divider()
     st.markdown("#### 🔑 Kết Nối Trí Tuệ Nhân Tạo (Gemini AI)")
-    api_status = get_api_key_status()
-    if api_status["has_keys"]:
-        st.success(f"🟢 **Hệ thống AI sẵn sàng:**\n{api_status['active_hint']}")
-    else:
-        st.warning("⚠️ Chưa phát hiện API Key trong `.env`.")
-
+    
     custom_key = st.text_input(
         "Khóa API dự phòng (Tùy chọn ghi đè):",
         type="password",
         value="",
-        help="Hệ thống đã tự động liên kết các key từ file cấu hình .env. Chỉ nhập vào đây nếu bạn muốn sử dụng một key cá nhân khác."
+        help="Hệ thống đã tự động liên kết 8 API keys từ file .env. Chỉ nhập vào đây nếu bạn muốn sử dụng một key cá nhân khác."
     )
     active_api_key = custom_key.strip() if custom_key.strip() else None
+
+    api_status = get_api_key_status()
+    if active_api_key:
+        st.info("🔑 Đang sử dụng Khóa API ghi đè thủ công.")
+    elif api_status["has_keys"]:
+        st.success(f"🟢 **Hệ thống AI sẵn sàng:**\n{api_status['active_hint']}")
+    else:
+        st.warning("⚠️ Chưa phát hiện API Key trong `.env` (Vui lòng nhập key ở trên để dùng AI).")
 
     st.caption("💡 *Quy chuẩn Dave Farrow: Não chỉ là cục pin nhỏ, đừng học dồn 2 tiếng. Hãy chạy nước rút 10 phút rồi thở bụng xả hơi.*")
 

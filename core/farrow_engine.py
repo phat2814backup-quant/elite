@@ -11,11 +11,15 @@ from typing import Dict, Any, Optional, List
 # Tự động nạp cấu hình từ .env
 try:
     import dotenv
-    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
-    if os.path.exists(env_path):
-        dotenv.load_dotenv(dotenv_path=env_path)
-    else:
-        dotenv.load_dotenv()
+    candidate_env_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"),
+        os.path.abspath(".env"),
+        "D:/02_HocTap/elite/.env",
+        "D:/02_HocTap/elite_thinking/.env"
+    ]
+    for p in candidate_env_paths:
+        if os.path.exists(p):
+            dotenv.load_dotenv(dotenv_path=p, override=True)
 except ImportError:
     pass
 
@@ -71,15 +75,38 @@ BẮT BUỘC TRẢ VỀ ĐỊNH DẠNG JSON HỢP LỆ (KHÔNG THÊM BẤT KỲ 
 
 
 def get_all_gemini_api_keys() -> List[str]:
-    """Thu thập toàn bộ danh sách Gemini API keys từ biến môi trường và .env."""
+    """Thu thập toàn bộ danh sách Gemini API keys từ file .env và biến môi trường."""
     keys = []
-    # Primary keys
+    
+    # 1. Quét trực tiếp nội dung các file .env khả dĩ
+    candidate_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"),
+        os.path.abspath(".env"),
+        "D:/02_HocTap/elite/.env",
+        "D:/02_HocTap/elite_thinking/.env"
+    ]
+    try:
+        import dotenv
+        for cp in candidate_paths:
+            if os.path.exists(cp):
+                vals = dotenv.dotenv_values(cp)
+                for k, v in vals.items():
+                    if v and ("API_KEY" in k or "GEMINI" in k or "GOOGLE" in k):
+                        if "SUPABASE" in k:
+                            continue
+                        v_str = str(v).strip()
+                        if v_str and v_str not in keys:
+                            keys.append(v_str)
+                            os.environ[k] = v_str
+    except Exception:
+        pass
+
+    # 2. Quét thêm từ os.environ
     for var_name in ["GOOGLE_API_KEY", "GEMINI_API_KEY"]:
         val = os.getenv(var_name, "").strip()
         if val and val not in keys:
             keys.append(val)
             
-    # Numbered keys (GEMINI_API_KEY_1 đến GEMINI_API_KEY_10)
     for i in range(1, 11):
         val = os.getenv(f"GEMINI_API_KEY_{i}", "").strip()
         if val and val not in keys:
