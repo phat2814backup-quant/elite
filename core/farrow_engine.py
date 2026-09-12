@@ -1,0 +1,134 @@
+﻿# -*- coding: utf-8 -*-
+"""
+Động Cơ Xử Lý Nén Tri Thức & Lâu Đài Ký Ức Dave Farrow (Farrow Engine)
+"""
+
+import os
+import json
+from typing import Dict, Any, Optional, List
+
+try:
+    import google.generativeai as genai
+except ImportError:
+    genai = None
+
+FARROW_SYSTEM_PROMPT = """Bạn là Chuyên gia Cao cấp về Phương pháp Trí nhớ Dave Farrow (2 lần kỷ lục Guinness trí nhớ).
+Nhiệm vụ tối thượng của bạn: NÉN MỌI TÀI LIỆU RƯỜM RÀ THÀNH ĐÚNG 3 KHỐI HẠT NHÂN (RULE OF 3 CHUNKING) THEO CHUẨN SINH HỌC NÃO NGƯỜI.
+
+Quy tắc bất di bất dịch:
+1. TUYỆT ĐỐI KHÔNG VIẾT DÀI. Loại bỏ 90% câu chữ thừa, định nghĩa hàn lâm, từ nối.
+2. CHỈ ĐƯỢC CHIA THÀNH ĐÚNG 3 KHỐI (Không được 2, không được 4).
+3. MỖI KHỐI BẮT BUỘC CÓ:
+   - Tên khối (ngắn gọn, viết hoa).
+   - Nguyên lý gốc (First Principle - đúng 1 câu duy nhất).
+   - Mỏ neo không gian quen thuộc: Khối 1 gắn ở CỬA RA VÀO PHÒNG, Khối 2 gắn ở MÀN HÌNH MÁY TÍNH, Khối 3 gắn ở CHIẾC BÀN & GHẾ.
+   - Hình ảnh kỳ quặc, phi lý gây sốc (Absurd Vivid Image) để ghim não (não người nhớ hình ảnh dị biệt tốt gấp 100 lần chữ).
+   - Câu hỏi kích hoạt phản xạ 5 giây (Trigger Question).
+4. Một hành động đòn bẩy bất đối xứng duy nhất (Risk cực nhỏ, Reward cực lớn).
+
+BẮT BUỘC TRẢ VỀ ĐỊNH DẠNG JSON HỢP LỆ (KHÔNG THÊM BẤT KỲ VĂN BẢN NGOÀI JSON):
+{
+  "title": "Tiêu đề ngắn dưới 6 từ",
+  "tagline": "Khẩu quyết tóm gọn 1 câu",
+  "chunks": [
+    {
+      "label": "TÊN KHỐI 1",
+      "principle": "Nguyên lý bất biến 1 câu",
+      "anchor": "CỬA RA VÀO PHÒNG",
+      "crazy_image": "Mô tả hình ảnh kỳ quặc, phi lý gây sốc ở cửa",
+      "trigger_question": "Câu hỏi phản xạ 5s"
+    },
+    {
+      "label": "TÊN KHỐI 2",
+      "principle": "Nguyên lý bất biến 1 câu",
+      "anchor": "MÀN HÌNH MÁY TÍNH",
+      "crazy_image": "Mô tả hình ảnh kỳ quặc, phi lý gây sốc ở màn hình",
+      "trigger_question": "Câu hỏi phản xạ 5s"
+    },
+    {
+      "label": "TÊN KHỐI 3",
+      "principle": "Nguyên lý bất biến 1 câu",
+      "anchor": "CHIẾC BÀN & GHẾ NGỒI",
+      "crazy_image": "Mô tả hình ảnh kỳ quặc, phi lý gây sốc ở bàn ghế",
+      "trigger_question": "Câu hỏi phản xạ 5s"
+    }
+  ],
+  "asymmetric_action": "1 hành động rủi ro tối thiểu, tiềm năng tối đa"
+}
+"""
+
+def compress_with_farrow_ai(
+    raw_text: str, 
+    api_key: Optional[str] = None, 
+    model_name: str = "gemini-2.5-flash"
+) -> Dict[str, Any]:
+    """
+    Sử dụng Gemini AI để nén văn bản thô thành cấu trúc Dave Farrow 3 Chunks.
+    Nếu không có API key hoặc lỗi mạng, tự động kích hoạt bộ bóc tách Heuristic.
+    """
+    cleaned = raw_text.strip()
+    if not cleaned:
+        return _heuristic_fallback("Trống", "Vui lòng nhập nội dung cần nén.")
+
+    key = api_key or os.getenv("GEMINI_API_KEY", "")
+    if key and genai is not None:
+        try:
+            genai.configure(api_key=key)
+            model = genai.GenerativeModel(
+                model_name=model_name,
+                system_instruction=FARROW_SYSTEM_PROMPT,
+                generation_config={"response_mime_type": "application/json"}
+            )
+            prompt = f"Nén tài liệu sau đây thành 3 khối Farrow:\n\n\"\"\"\n{cleaned[:8000]}\n\"\"\""
+            response = model.generate_content(prompt, request_options={"timeout": 25})
+            if response and response.text:
+                t = response.text.strip()
+                if t.startswith("```"):
+                    lines = t.splitlines()
+                    if len(lines) >= 2 and lines[-1].startswith("```"):
+                        t = "\n".join(lines[1:-1]).strip()
+                data = json.loads(t)
+                if isinstance(data, dict) and "chunks" in data and len(data["chunks"]) == 3:
+                    return data
+        except Exception:
+            pass
+
+    # Heuristic fallback if AI fails or no key
+    return _heuristic_fallback(cleaned[:60], cleaned)
+
+
+def _heuristic_fallback(title_hint: str, content: str) -> Dict[str, Any]:
+    """Bộ nén dự phòng theo luật mẫu khi không có kết nối API."""
+    paragraphs = [p.strip() for p in content.split("\n\n") if p.strip()]
+    p1 = paragraphs[0][:150] if len(paragraphs) > 0 else "Bóc tách chân lý vật lý gốc rễ."
+    p2 = paragraphs[1][:150] if len(paragraphs) > 1 else "Đo lường dòng chảy động lực và xác suất."
+    p3 = paragraphs[2][:150] if len(paragraphs) > 2 else "Hành động đòn bẩy rủi ro thấp, tiềm năng lớn."
+
+    return {
+        "title": "Nén Farrow Tốc Hành: " + title_hint[:30],
+        "tagline": "Đập vụn giả định -> Đo lường động lực -> Ra đòn bất đối xứng",
+        "chunks": [
+            {
+                "label": "KHỐI 1: BẢN CHẤT GỐC",
+                "principle": p1,
+                "anchor": "CỬA RA VÀO PHÒNG",
+                "crazy_image": "Một chiếc máy ép thủy lực khổng lồ đang nghiền nát đống chữ ở cửa thành một viên kẹo dẻo phát sáng lấp lánh!",
+                "trigger_question": "Sự thật khách quan không thể chối cãi ở đây là gì?"
+            },
+            {
+                "label": "KHỐI 2: DÒNG CHẢY ĐỘNG LỰC",
+                "principle": p2,
+                "anchor": "MÀN HÌNH MÁY TÍNH",
+                "crazy_image": "Màn hình bốc cháy dữ dội, hiện lên các mũi tên dòng chảy đang chỉ chính xác vào điểm yếu của đối thủ!",
+                "trigger_question": "Ai đang có động cơ làm việc này, và hệ quả bậc hai là gì?"
+            },
+            {
+                "label": "KHỐI 3: ĐÒN BẨY HÀNH ĐỘNG",
+                "principle": p3,
+                "anchor": "CHIẾC BÀN & GHẾ NGỒI",
+                "crazy_image": "Một chiếc lò xo titan bị nén cong vòng trên ghế, sẵn sàng bật tung phóng bạn đến mục tiêu!",
+                "trigger_question": "Cách làm nào tốn ít nguồn lực nhất nhưng mang lại hiệu quả lớn nhất?"
+            }
+        ],
+        "asymmetric_action": "Bắt đầu bằng một thử nghiệm vi mô chi phí gần bằng 0 ngay trong hôm nay."
+    }

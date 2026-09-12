@@ -1,0 +1,15 @@
+﻿# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and environments
+.venv/
+env/
+venv/
+ENV/
+.streamlit/secrets.toml
+.env
+scratch/
+*.log
+.DS_Store
