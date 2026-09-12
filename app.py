@@ -43,6 +43,12 @@ from core.models_engine import (
     get_models_for_topic_chunk,
     get_model_full_detail
 )
+from core.macro_evolution import (
+    CIVILIZATIONAL_ERAS,
+    ELITE_HIDDEN_LAWS,
+    SAMPLE_MACRO_TRENDS,
+    analyze_macro_radar,
+)
 
 # -----------------------------------------------------------------------------
 # Page Configuration
@@ -337,10 +343,134 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
             for sub_item in display_items[:10]:
                 render_gmm_detailed_model(sub_item, is_expanded=False)
 
+    if topic.get("category") == "🌐 Thế Cuộc & Giới Elite":
+        st.markdown("---")
+        st.markdown("### 🌐 Lăng Kính Thế Cuộc & Quy Luật Vận Hành Ngầm Của Giới Elite (Bản Bổ Trợ Chuyên Sâu)")
+        st.caption("Bóc tách toàn cảnh dòng chảy chuyển dịch các thời đại kinh tế và giải mã 8 mật mã chiến lược của tầng lớp tinh hoa dưới lăng kính First Principles.")
+        
+        m_tab1, m_tab2, m_tab3 = st.tabs([
+            "⏳ Trục Tiến Hóa 5 Kỷ Nguyên",
+            "👁️ 8 Mật Mã Vận Hành Ngầm Elite",
+            "📡 Máy Quét Đọc Vị Thế Cuộc (AI Radar)"
+        ])
+        
+        with m_tab1:
+            st.markdown("""
+            #### 🧬 Bản Chất Chuyển Dịch Kinh Tế Qua Các Thời Đại
+            Bản chất của mọi nền kinh tế đều xoay quanh: **Phân bổ nguồn lực khan hiếm để tối đa hóa sự sinh tồn và phát triển.**
+            """)
+            st.info("""
+            💥 **Định luật Chuyển Pha Kinh Tế (The Phase-Transition Law):**  
+            Khi một rào cản về **Năng lượng** hoặc **Công nghệ** bị phá vỡ ➔ **Nguồn lực cốt lõi cũ bị bình dân hóa (tiến về giá trị 0đ)** ➔ **Một nguồn lực mới lên ngôi** ➔ Dẫn đến sự tổ chức lại toàn bộ cấu trúc quyền lực, nhà nước và xã hội.
+            """)
+            
+            era_titles = [f"{e['icon']} {e['name']}" for e in CIVILIZATIONAL_ERAS]
+            selected_era_idx = st.radio(
+                "Chọn thời đại để mổ xẻ cấu trúc kinh tế:",
+                range(len(CIVILIZATIONAL_ERAS)),
+                format_func=lambda i: era_titles[i],
+                horizontal=True,
+                key="vault_macro_era_selector"
+            )
+            era_data = CIVILIZATIONAL_ERAS[selected_era_idx]
+            st.markdown(f"##### {era_data['icon']} {era_data['name']} — *{era_data['subtitle']}*")
+            st.caption(f"⏱️ Khung thời gian: **{era_data['timeframe']}**")
+            
+            c_e1, c_e2 = st.columns(2)
+            with c_e1:
+                st.markdown(f"**📌 Nguồn Lực Cốt Lõi:**  \n{era_data['core_resource']}")
+                st.markdown(f"**⚡ Năng Lượng & Công Nghệ:**  \n{era_data['energy_tech']}")
+                st.markdown(f"**🛑 Giới Hạn / Điểm Nghẽn (Constraint):**  \n{era_data['constraint']}")
+                st.markdown(f"**💼 Mô Hình Kinh Tế:**  \n{era_data['economic_model']}")
+            with c_e2:
+                st.error(f"**📉 Bị Bình Dân Hóa (Rớt Giá Về 0đ):**  \n{era_data['commoditized']}")
+                st.success(f"**💎 Nút Thắt Khan Hiếm Mới Lên Ngôi:**  \n{era_data['new_scarce_asset']}")
+                st.markdown(f"**🚀 Đòn Bẩy Của Giới Tinh Hoa:**  \n{era_data['elite_leverage']}")
+                st.warning(f"**💥 Tại Sao Chuyển Giao? (Turning Point):**  \n{era_data['turning_point']}")
+            
+            with st.expander("🔬 Phân tích bản chất sâu sắc & Bài học lịch sử", expanded=False):
+                st.markdown(era_data['deep_dive'])
 
-# -----------------------------------------------------------------------------
-# PHÒNG 2: PHÒNG ÉP XUNG 10 PHÚT (10-MINUTE FOCUS SPRINT)
-# -----------------------------------------------------------------------------
+        with m_tab2:
+            st.markdown("#### 👁️ Bộ Mật Mã 8 Quy Tắc Vận Hành Ngầm Của Giới Tinh Hoa (The Elite Playbook)")
+            st.caption("Các định luật toán học, vật lý và kinh tế hành vi được giới tinh hoa thấu hiểu và áp dụng triệt để:")
+            search_law = st.text_input("🔍 Tìm kiếm quy tắc ngầm:", "", placeholder="Ví dụ: Cantillon, Bất đối xứng, Khan hiếm, Coase, Đòn bẩy...", key="vault_law_search")
+            for law in ELITE_HIDDEN_LAWS:
+                if search_law.strip():
+                    match = (
+                        search_law.lower() in law["title"].lower()
+                        or search_law.lower() in law["axiom"].lower()
+                        or any(search_law.lower() in m.lower() for m in law.get("linked_models", []))
+                    )
+                    if not match:
+                        continue
+                with st.expander(f"{law['icon']} #{law['number']}. {law['title']}", expanded=False):
+                    st.markdown(f"> *\"{law['axiom']}\"*")
+                    c_l1, c_l2 = st.columns(2)
+                    with c_l1:
+                        st.error(f"👥 **Góc Nhìn Đám Đông (Bẫy Nhận Thức):**  \n{law['mass_perception']}")
+                        st.success(f"👁️ **Hành Động Của Giới Elite:**  \n{law['elite_execution']}")
+                    with c_l2:
+                        st.info(f"🔬 **Cơ Sở Toán Học / Vật Lý / Kinh Tế:**  \n{law['physics_math_basis']}")
+                        st.warning(f"💡 **Ví Dụ Thực Chiến & Lịch Sử:**  \n{law['real_world_case']}")
+                    st.caption(f"🎯 **Câu hỏi tự vấn:** *{law['self_inquiry']}*")
+
+        with m_tab3:
+            st.markdown("#### 📡 Máy Quét Đọc Vị Thế Cuộc Bằng AI (First-Principles Macro Radar)")
+            st.caption("Bóc tách bất kỳ biến động vĩ mô hoặc công nghệ mới nào: Thứ gì sắp rớt giá về 0? Nút thắt khan hiếm mới ở đâu? Giới tinh hoa sẽ đi nước cờ gì?")
+            
+            st.markdown("##### 💡 Bấm chọn xu hướng mẫu kinh điển để nạp nhanh:")
+            s_cols = st.columns(len(SAMPLE_MACRO_TRENDS))
+            for s_idx, sample in enumerate(SAMPLE_MACRO_TRENDS):
+                with s_cols[s_idx]:
+                    sample_short_title = sample["title"].split()[0] + " " + " ".join(sample["title"].split()[1:3])
+                    if st.button(sample_short_title, key=f"vault_macro_sample_{s_idx}", help=sample["title"]):
+                        st.session_state["vault_macro_radar_input"] = sample["query"]
+                        st.rerun()
+
+            default_q = st.session_state.get(
+                "vault_macro_radar_input",
+                "Sự xuất hiện của các AI Agents tự hành có khả năng lập trình, viết báo cáo, xử lý dữ liệu và vận hành quy trình kinh doanh 24/7 với chi phí tiệm cận 0."
+            )
+            trend_text = st.text_area(
+                "Nhập mô tả biến động vĩ mô, công nghệ hoặc sự kiện cần bóc tách:",
+                value=default_q,
+                height=110,
+                key="vault_macro_trend_text_area"
+            )
+            if st.button("📡 Quét Đọc Vị Theo First Principles", type="primary", use_container_width=True, key="vault_btn_radar"):
+                with st.spinner("🤖 Đang kích hoạt Bộ máy Phân tích Thế cuộc & First Principles Engine..."):
+                    res_radar = analyze_macro_radar(trend_text.strip(), api_key=active_api_key)
+                if not res_radar:
+                    st.error("Không nhận được phản hồi từ AI Engine.")
+                elif "error" in res_radar and not res_radar.get("trend_summary"):
+                    st.error(f"Lỗi: {res_radar['error']}")
+                else:
+                    st.success("✅ Đã hoàn tất bóc tách thế cuộc!")
+                    st.markdown(f"#### 🎯 Bản Chất Cốt Lõi: {res_radar.get('trend_summary', '')}")
+                    st.info(f"⚡ **Chi Phí Giao Dịch Bị Kéo Tụt:** {res_radar.get('transaction_costs_impact', '')}")
+                    c_r1, c_r2 = st.columns(2)
+                    with c_r1:
+                        st.error("#### 📉 Nguồn Lực Bị Trượt Giá Về 0")
+                        for item in res_radar.get("commoditized_assets", []):
+                            st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
+                    with c_r2:
+                        st.success("#### 💎 Nút Thắt Khan Hiếm Mới")
+                        for item in res_radar.get("complementary_scarcities", []):
+                            st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
+                    st.markdown("#### 👁️ Nước Cờ Chiến Lược Của Giới Elite")
+                    for move in res_radar.get("elite_strategic_moves", []):
+                        st.markdown(f"- ♟️ {move}")
+                    c_b1, c_b2 = st.columns(2)
+                    with c_b1:
+                        st.markdown("#### 🕸️ Mô Hình Hạt Nhân Kích Hoạt")
+                        for m_item in res_radar.get("activated_mental_models", []):
+                            st.markdown(f"- `{m_item.get('model_name', '')}`: {m_item.get('mechanism', '')}")
+                    with c_b2:
+                        st.markdown("#### 🧭 Playbook Hành Động")
+                        for act in res_radar.get("action_playbook_for_individual", []):
+                            st.markdown(f"- 🚀 {act}")
+
 elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
     st.markdown("### ⏱️ Phòng Ép Xung 10 Phút (The 10-Minute Focus Sprint)")
     st.caption("Chạy nước rút tập trung cao độ trong 10 phút. Chọn một chủ đề Lâu Đài Ký Ức hoặc Rút 3 Thẻ Bài Farrow Tarot để thử thách não bộ!")

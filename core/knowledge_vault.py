@@ -649,6 +649,119 @@ FARROW_TOPICS: Dict[str, Dict[str, Any]] = {
                 "explanation": "Chính xác! Tối ưu bất kỳ khâu nào nằm ngoài nút thắt cổ chai đều vô nghĩa, vì dòng chảy hệ thống chỉ bị giới hạn bởi khâu yếu nhất."
             }
         ]
+    },
+    # =========================================================================
+    # NHÓM 8: LĂNG KÍNH THẾ CUỘC & QUY LUẬT ELITE
+    # =========================================================================
+    "macro_civilization_eras": {
+        "id": "macro_civilization_eras",
+        "category": "🌐 Thế Cuộc & Giới Elite",
+        "title": "Trục Tiến Hóa 5 Kỷ Nguyên & Định Luật Chuyển Pha",
+        "icon": "⏳",
+        "tagline": "Mọi thời đại đều xoay quanh chuyển pha năng lượng: thứ cũ rớt giá về 0đ, nút thắt mới bùng nổ thặng dư",
+        "summary": "Bóc tách 5 kỷ nguyên kinh tế từ Săn bắt, Nông nghiệp, Công nghiệp, Thông tin đến Kỷ nguyên AI & Sự Khan hiếm Chân thực dưới lăng kính First Principles.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['BIO-07', 'ECON-02', 'ECON-05'],
+                "label": "TRỤ 1: GỐC RỄ SINH TỒN & NÔNG NGHIỆP",
+                "sub_modes": "(1) Sức Chứa Môi Trường (Carrying Capacity) + (2) Bẫy Malthus Dân Số + (3) Địa Tô Ricardo & Thặng Dư Đất",
+                "principle": "1. Chạm trần calo sinh học buộc phải chuyển dịch pha công nghệ để không tuyệt chủng ➔ 2. Dân số tăng theo cấp số nhân vượt quá cấp số cộng lương thực dẫn đến reset thảm khốc ➔ 3. Đất đai màu mỡ tạo thặng dư khởi thủy cho vua chúa và địa tô độc quyền.",
+                "anchor_name": "HÓA THẠCH RĂNG NẸP & VỰC ĐÁ KHAN HIẾM BỎNG CHÁY",
+                "anchor_icon": "🏹",
+                "crazy_image": "Tại VỰC ĐÁ KHAN HIẾM BỎNG CHÁY: (1) Chiếc cân đo calo săn bắt bị kẹp cứng bởi biển báo neon đỏ rực CARRYING CAPACITY (Sức chứa môi trường), (2) quả bom hẹn giờ Bẫy Malthus tích tắc đếm ngược bên cạnh cánh đồng lúa mì cằn cỗi (Bẫy Malthus), (3) một vị lãnh chúa phong kiến ngồi trên đống vàng thu địa tô từ mảnh đất màu mỡ duy nhất (Địa tô Ricardo)!",
+                "trigger_question": "Hệ thống hiện tại đang chạm trần sức chứa nào? Nguồn calo cũ có đang cạn kiệt? Ai đang thu địa tô từ mảnh đất khan hiếm nhất?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['ECON-03', 'ECON-06', 'PR_20'],
+                "label": "TRỤ 2: CHUYỂN PHA CÔNG NGHIỆP & THÔNG TIN",
+                "sub_modes": "(1) Năng Lượng Hóa Thạch & Quy Mô + (2) Chi Phí Giao Dịch Coase + (3) Băng Thông Thuật Toán & Dòng Chú Ý",
+                "principle": "1. Động cơ than đá đập tan giới hạn cơ bắp tạo ra sản xuất hàng loạt và tập đoàn tư bản ➔ 2. Chi phí tìm kiếm và điều phối giảm mạnh tổ chức lại toàn bộ chuỗi cung ứng ➔ 3. Dòng chú ý của loài người trở thành tài nguyên tối thượng bị thao túng bởi thuật toán phân phối.",
+                "anchor_name": "CỖ MÁY HƠI NƯỚC KHỔNG LỒ & THÁP VỆ TINH PHÁT SÁNG",
+                "anchor_icon": "🏭",
+                "crazy_image": "Tại CỖ MÁY HƠI NƯỚC & THÁP VỆ TINH: (1) Nồi súp de hơi nước khổng lồ phun khói đùn ra hàng triệu chiếc ô tô giống hệt nhau với chi phí rẻ mạt (Kinh tế quy mô), (2) các tập đoàn khổng lồ co cụm lại khi chi phí giao dịch Coase bị kéo sập, (3) trên đỉnh tháp vệ tinh, một con mắt laser thuật toán quét hàng tỷ chiếc smartphone hút trọn dòng chú ý của nhân loại (Kinh tế chú ý)!",
+                "trigger_question": "Rào cản năng lượng nào vừa bị phá vỡ? Chi phí giao dịch nào đang tụt dốc? Thuật toán đang chuyển hướng dòng chú ý của khách hàng về đâu?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['ECON-01', 'BIO-10', 'SYS-04'],
+                "label": "TRỤ 3: KỶ NGUYÊN AI & SỰ KHAN HIẾM CHÂN THỰC",
+                "sub_modes": "(1) Định Lý Khan Hiếm Bổ Trợ + (2) Thuyết Internet Chết & Ốc Đảo Kín + (3) Chứng Minh Nhân Dạng & Trải Nghiệm Vật Lý",
+                "principle": "1. Khi nhận thức và code cơ bản rẻ như nước lã, giá trị kinh tế dịch chuyển sang watt điện sạch và chip tính toán ➔ 2. Web mở tràn ngập rác AI slop buộc giới tinh hoa rút lui vào ốc đảo khép kín ➔ 3. Định giá siêu cao cho danh tính sinh học thật, sự vụng về chân thật và các sự kiện hiện diện vật lý trực tiếp.",
+                "anchor_name": "LÒ PHẢN ỨNG HẠT NHÂN MINI & DẤU VÂN TAY VÀNG RÒNG",
+                "anchor_icon": "🤖",
+                "crazy_image": "Tại LÒ PHẢN ỨNG HẠT NHÂN MINI: (1) Lò phản ứng hạt nhân phát sáng xanh ngắt cấp điện cho đàn robot AI đang viết triệu dòng code miễn phí (Khan hiếm bổ trợ), (2) bên ngoài bức tường kính, mạng internet mở chìm trong biển rác AI Slop vô hồn, (3) bên trong căn phòng VIP, một vị tỷ phú đóng dấu vân tay vàng ròng Proof-of-Personhood lên bản giao kèo tay đôi bằng xương bằng thịt!",
+                "trigger_question": "Khi AI biến kỹ năng này thành miễn phí, nút thắt khan hiếm bổ trợ nào vừa xuất hiện? Đâu là bằng chứng con người thật không thể làm giả?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Theo Định luật Chuyển Pha Kinh Tế (Phase-Transition Law), điều gì luôn xảy ra khi một kỷ nguyên công nghệ mới ra đời?",
+                "options": [
+                    "Nguồn lực cũ lập tức biến mất hoàn toàn khỏi trái đất.",
+                    "Nguồn lực cốt lõi cũ bị bình dân hóa (tiến về giá trị 0đ), và thặng dư dịch chuyển sang nút thắt khan hiếm mới liền kề.",
+                    "Mọi ngành nghề đều giữ nguyên giá trị như cũ."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Khi công nghệ mới đột phá, tài nguyên cũ bị biến thành hàng hóa bình dân rẻ mạt (commoditized), thặng dư dồn tụ sang nút thắt khan hiếm mới."
+            }
+        ]
+    },
+    "macro_elite_laws": {
+        "id": "macro_elite_laws",
+        "category": "🌐 Thế Cuộc & Giới Elite",
+        "title": "8 Mật Mã Vận Hành Ngầm Của Giới Elite",
+        "icon": "👁️",
+        "tagline": "Không chạy theo thứ rớt giá về 0: Đứng sát miệng vòi bơm, nắm đòn bẩy tự trị và rút lui vào ốc đảo tín hiệu cao",
+        "summary": "Bộ mật mã chiến lược gồm 8 quy tắc toán học, vật lý và kinh tế hành vi được tầng lớp tinh hoa áp dụng để định vị dòng chảy tài sản và quyền lực.",
+        "chunks": [
+            {
+                "id": "chunk_1",
+                "model_ids": ['ECON-15', 'SYS-10', 'ECON-01'],
+                "label": "TRỤ 1: ĐỊNH VỊ NGUỒN CHẢY & THƯỢNG NGUỒN",
+                "sub_modes": "(1) Hiệu Ứng Cantillon Cận Nguồn Bơm + (2) Chênh Lệch Giá & Cửa Sổ Arbitrage + (3) Tư Duy Bậc N Dịch Chuyển Năng Lượng",
+                "principle": "1. Ai đứng sát miệng vòi bơm thanh khoản/công nghệ sẽ húp trọn 90% thặng dư trước khi sự pha loãng xảy ra ➔ 2. Tận dụng triệt để độ trễ thông tin và ma sát mạng lưới để ăn chênh lệch định giá ➔ 3. Đón đầu chuỗi phản ứng dây chuyền bậc 2 và bậc 3 nơi dòng năng lượng bắt buộc phải tụ về.",
+                "anchor_name": "VÒI BƠM VÀNG THƯỢNG NGUỒN & KÍNH NHÌN XUYÊN BẬC 3",
+                "anchor_icon": "💧",
+                "crazy_image": "Tại VÒI BƠM VÀNG THƯỢNG NGUỒN: (1) Một chiếc vòi rồng bơm thẳng dòng vàng nguyên chất vào xô của kẻ đứng đầu nguồn trong khi đám đông hạ nguồn nhận xô nước đục lạm phát (Cantillon), (2) tay buôn chênh lệch giá dùng kính lúp gom sạch tài sản định giá sai trong chớp mắt (Arbitrage), (3) ống kính viễn vọng bậc 3 nhìn thấy trước trận bão điện hạt nhân khi đám đông vẫn đang mải mê cài chatbot (Tư duy bậc N)!",
+                "trigger_question": "Vị thế của tôi đang cách miệng vòi bơm bao nhiêu bước trung gian? Tôi đang mua sự kiện bậc 1 hay đã đón đầu nút thắt bậc 3?"
+            },
+            {
+                "id": "chunk_2",
+                "model_ids": ['SYS-04', 'PHYS-01', 'ECON-08'],
+                "label": "TRỤ 2: CẤU TRÚC VỊ THẾ & ĐÒN BẨY KHÔNG XIN PHÉP",
+                "sub_modes": "(1) Bất Đối Xứng Lồi & Barbell + (2) Đòn Bẩy Không Cần Xin Phép (Code/Media/AI) + (3) Hạt Nhân Coase Tinh Gọn",
+                "principle": "1. Khoanh vùng tổn thất tối đa bằng 1 cọng lông nhưng mở toang tiềm năng sinh lời vô hạn ➔ 2. Nhân bản sức mạnh gấp 10.000 lần bằng Code, Media và AI Agents tự chạy khi đang ngủ ➔ 3. Co cụm tổ chức về hạt nhân 3-5 người ra quyết định, giải phóng khỏi mỡ thừa quan liêu cồng kềnh.",
+                "anchor_name": "CHIẾC CÂN QUẢ TẠ BARBELL & ĐẠI BẢN DOANH 3 NGƯỜI",
+                "anchor_icon": "⚡",
+                "crazy_image": "Tại ĐẠI BẢN DOANH 3 NGƯỜI: (1) Chiếc đòn tạ Barbell một đầu khóa két sắt bất hoại, đầu kia móc vào quả tên lửa phi tuyến 1000x (Bất đối xứng lồi), (2) một lập trình viên duy nhất ngồi chỉ huy dàn 100 robot AI Agent tự động kéo tiền về két suốt đêm (Đòn bẩy không xin phép), (3) phòng chỉ có 3 chiếc ghế điều hành doanh nghiệp 100 triệu USD không bóng dáng một tầng quản lý trung gian nào (Hạt nhân Coase)!",
+                "trigger_question": "Cấu trúc rủi ro của tôi là Lồi hay Lõm? Cỗ máy đòn bẩy của tôi có tự chạy khi tôi đang ngủ không? Bộ máy của tôi có đang bị chi phí quan liêu đè bẹp?"
+            },
+            {
+                "id": "chunk_3",
+                "model_ids": ['PR_20', 'BIO-10', 'SYS-04'],
+                "label": "TRỤ 3: PHÒNG THỦ & LIÊN MINH BẢO CHỨNG",
+                "sub_modes": "(1) Ốc Đảo Tín Hiệu Cao (Gated Enclaves) + (2) Phí Tổn Tín Hiệu & Skin In The Game + (3) Tính Bất Hoại Phản Dễ Vỡ",
+                "principle": "1. Rút lui hoàn toàn khỏi rạp xiếc mạng xã hội ồn ào vào các căn phòng kín có bảo chứng nơi chi phí niềm tin = 0 ➔ 2. Chỉ tin những tín hiệu đi kèm cái giá phải trả đắt đỏ (tiền thật, rủi ro cá nhân) ➔ 3. Thiết kế hệ thống sao cho mọi khủng hoảng, biến động và hỗn loạn chỉ làm ta mạnh mẽ và thịnh vượng hơn.",
+                "anchor_name": "CÁNH CỔNG VÒNG TRÒN CHATHAM HOUSE & BỘ GIÁP THỬ LỬA",
+                "anchor_icon": "🏰",
+                "crazy_image": "Tại CÁNH CỔNG CHATHAM HOUSE: (1) Cánh cổng thép đen chỉ mở cho những ai có thư bảo lãnh danh dự, bên trong các tinh hoa thì thầm chốt thương vụ tỷ đô trong yên tĩnh tuyệt đối (Ốc đảo tín hiệu cao), (2) trước cửa là lò nung thử lửa, kẻ phát ngôn phải cởi áo nhảy vào lửa để chứng minh Skin-in-the-game (Phí tổn tín hiệu), (3) trên tường thành treo bộ giáp Hydra càng bị bom đạn giáng vào càng đúc thêm lớp thép sáng bóng bất hoại (Antifragility)!",
+                "trigger_question": "Tôi đang lãng phí thời gian ở rạp xiếc công cộng hay đang xây dựng ốc đảo tín hiệu cao? Đối tác có da thịt trong cuộc chơi không? Biến cố này làm tôi mạnh lên như thế nào?"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Theo Hiệu ứng Cantillon (Cantillon Effect), tại sao người đứng gần nguồn bơm tiền/công nghệ lại hưởng lợi lớn nhất?",
+                "options": [
+                    "Vì họ thông minh và làm việc chăm chỉ hơn tất cả mọi người.",
+                    "Vì họ tiếp cận nguồn vốn/công nghệ trước khi giá cả tài sản và hàng hóa tăng vọt do lạm phát hay cạnh tranh pha loãng.",
+                    "Vì chính phủ luôn ưu tiên chuyển tiền cho họ đầu tiên."
+                ],
+                "correct_idx": 1,
+                "explanation": "Chính xác! Tiền tệ và công nghệ mất thời gian lan tỏa qua các tầng mạng lưới; kẻ đứng ở thượng nguồn mua tài sản với giá gốc trước khi lạm phát đẩy giá lên."
+            }
+        ]
     }
 }
 
