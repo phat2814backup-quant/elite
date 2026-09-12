@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-ELITE FARROW 10-MINUTE ENGINE (V2.1)
+ELITE FARROW 10-MINUTE ENGINE (V2.2)
 Ứng dụng Nén Tri Thức & Phản Xạ 10 Phút theo Phương pháp Kỷ lục gia Guinness Dave Farrow
-Hợp nhất: 3 Trụ Cột Trinity, 152 Mô Hình & Nguyên Lý Tinh Hoa (Unified Farrow Latticework), 
-Máy Ép AI Xoay Tua Đa Khóa & Trạm Thở Sạc Pin.
+Thiết kế tối giản tuyệt đối:
+1. 🏛️ Lâu Đài Ký Ức (The 3 Trinity) — 11 Chủ đề nén sẵn theo 7 nhóm ngành khoa học
+2. ⏱️ Phòng Ép Xung 10 Phút (Focus Sprint) — Chạy nước rút tập trung cao độ
+3. ⚡ Máy Ép Farrow 1-Click (AI Compressor) — Nén tài liệu dài với xoay tua 8 API keys
+4. 🫁 Trạm Thở Bụng Sạc Pin — Box Breathing phục hồi pin não
 """
 
 import os
@@ -12,7 +15,11 @@ import textwrap
 import html
 import streamlit as st
 
-from core.knowledge_vault import get_all_farrow_topics, get_farrow_topic_by_id
+from core.knowledge_vault import (
+    get_all_farrow_topics,
+    get_farrow_topic_by_id,
+    get_farrow_topics_by_category
+)
 from core.farrow_engine import (
     compress_with_farrow_ai,
     get_all_gemini_api_keys,
@@ -56,8 +63,8 @@ render_html("""
     <div class="farrow-badge">⚡ DAVE FARROW 10-MINUTE MEMORY ENGINE</div>
     <h1 style="color: #f8fafc; margin: 4px 0 8px 0; font-weight: 800;">ELITE THINKING: FARROW EDITION</h1>
     <p style="color: #94a3b8; margin: 0; font-size: 1.05rem;">
-        Loại bỏ 90% chữ rườm rà. Nén toàn bộ <b>152 Mô Hình & Nguyên Lý Tinh Hoa</b> về đúng <b>Bộ 3 Hạt Nhân (Rule of 3)</b>, 
-        ghim vào <b>Lâu Đài Ký Ức</b> và chiếm lĩnh trong <b>10 Phút Nước Rút</b>.
+        Loại bỏ 90% chữ rườm rà. Nén toàn bộ tri thức tinh hoa về đúng <b>Bộ 3 Hạt Nhân (Rule of 3)</b>, 
+        ghim vào <b>Lâu Đài Ký Ức 3 Mỏ Neo</b> và chiếm lĩnh trong <b>10 Phút Nước Rút</b>.
     </p>
 </div>
 """)
@@ -71,7 +78,6 @@ with st.sidebar:
         "Chọn phòng chức năng:",
         [
             "🏛️ Lâu Đài Ký Ức (The 3 Trinity)",
-            "🕸️ Ma Trận Mô Hình & Nguyên Lý (Unified Latticework)",
             "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
             "⚡ Máy Ép Farrow 1-Click (AI Compressor)",
             "🫁 Trạm Thở Bụng Sạc Pin"
@@ -102,7 +108,7 @@ with st.sidebar:
 # -----------------------------------------------------------------------------
 if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
     st.markdown("### 🏛️ Lâu Đài Ký Ức: Chọn Chủ Đề Nén Sẵn")
-    st.caption("Toàn bộ 152 Mô hình & Nguyên lý đã được phân loại và nén sẵn theo Quy tắc số 3: 3 Khối hạt nhân gắn tại 3 mỏ neo phòng học của bạn.")
+    st.caption("Toàn bộ 152 Mô hình & Nguyên lý đã được phân loại và nén sẵn theo Quy tắc số 3: Đúng 3 Khối hạt nhân gắn tại 3 mỏ neo phòng học của bạn.")
 
     all_topics = get_all_farrow_topics()
     categories = ["Tất cả danh mục"] + list(dict.fromkeys(t.get("category", "Khác") for t in all_topics))
@@ -144,9 +150,9 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
             <div class="trinity-card">
                 <div class="anchor-badge">{chunk['anchor_icon']} MỎ NEO: {chunk['anchor_name']}</div>
                 <h3 style="color: #f8fafc; margin-top: 0; font-size: 1.25rem;">{chunk['label']}</h3>
-                <p style="color: #38bdf8; font-size: 0.85rem; font-weight: 600;">{chunk.get('sub_modes', '')}</p>
+                <p style="color: #38bdf8; font-size: 0.85rem; font-weight: 600; line-height: 1.4;">{chunk.get('sub_modes', '')}</p>
                 <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 12px 0;">
-                    <b>Nguyên lý gốc:</b> {chunk['principle']}
+                    <b>Nguyên lý gốc:</b><br>{chunk['principle']}
                 </div>
                 <div class="crazy-image-box">
                     🧠 <b>HÌNH ẢNH DỊ BIỆT GHIM NÃO:</b><br>
@@ -177,155 +183,50 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
                 else:
                     st.error("❌ **CHƯA ĐÚNG!** Hãy nhớ lại 3 mỏ neo trong lâu đài ký ức để phản xạ lại.")
 
-# -----------------------------------------------------------------------------
-# PHÒNG 2: MA TRẬN MÔ HÌNH & NGUYÊN LÝ TINH HOA (UNIFIED FARROW LATTICEWORK)
-# -----------------------------------------------------------------------------
-elif app_mode == "🕸️ Ma Trận Mô Hình & Nguyên Lý (Unified Latticework)":
-    st.markdown("### 🕸️ Ma Trận Mô Hình & Nguyên Lý Tinh Hoa (Unified Farrow Latticework)")
-    st.caption(
-        "Hợp nhất toàn bộ **88 Mô Hình Munger & 64 Định Luật Khoa Học Khởi Thủy** vào 3 Ngăn Kéo Farrow. "
-        "Đã loại bỏ hoàn toàn các mục rỗng, làm sạch dữ liệu và tối ưu cho phản xạ 10 giây."
-    )
-
-    models_grouped = get_farrow_models_grouped()
-    all_items = load_unified_farrow_catalog()
-    metrics = get_farrow_metrics()
-
-    # Metrics row
-    col_m1, col_m2, col_m3, col_m4 = st.columns(4)
-    with col_m1:
-        st.metric("📦 Tổng Số Tinh Hoa", f"{metrics['total']} mục")
-    with col_m2:
-        st.metric("⭐ Siêu Hạt Nhân (Tier 1)", f"{metrics['tier1_count']} mô hình")
-    with col_m3:
-        st.metric("🚪 Soi Gốc / 🖥️ Đọc Dòng", f"{metrics['root_count']} / {metrics['flow_count']}")
-    with col_m4:
-        st.metric("🪑 Ra Đòn Bất Đối Xứng", f"{metrics['strike_count']} đòn bẩy")
-
-    # Filter row
-    col_filter1, col_filter2 = st.columns([1, 2])
-    with col_filter1:
-        tier_filter = st.selectbox(
-            "Lọc phân loại:",
-            [
-                "Tất cả danh mục",
-                "⭐ Chỉ xem Tier 1 (Siêu hạt nhân 80/20)",
-                "Cấp 2 & 3",
-                "🔬 Chỉ xem Nguyên lý Khoa học",
-                "🧠 Chỉ xem Mô hình Tư duy"
-            ]
-        )
-    with col_filter2:
-        search_kw = st.text_input(
-            "🔍 Tìm kiếm nhanh tinh hoa:", 
-            placeholder="Gõ tên mô hình, định luật, đòn bẩy, bayes, entropy, le chatelier, acsimet..."
-        )
-
-    # 3 Farrow Tabs
-    tab_root, tab_flow, tab_strike = st.tabs([
-        f"🚪 TRỤ 1: SOI GỐC ({metrics['root_count']})",
-        f"🖥️ TRỤ 2: ĐỌC DÒNG ({metrics['flow_count']})",
-        f"🪑 TRỤ 3: RA ĐÒN ({metrics['strike_count']})"
-    ])
-
-    def render_unified_card_list(items_list):
-        filtered = items_list
-        if tier_filter == "⭐ Chỉ xem Tier 1 (Siêu hạt nhân 80/20)":
-            filtered = [m for m in filtered if m.get("tier") == 1]
-        elif tier_filter == "Cấp 2 & 3":
-            filtered = [m for m in filtered if m.get("tier") in [2, 3]]
-        elif tier_filter == "🔬 Chỉ xem Nguyên lý Khoa học":
-            filtered = [m for m in filtered if m.get("source") in ["scientific_principle", "merged"]]
-        elif tier_filter == "🧠 Chỉ xem Mô hình Tư duy":
-            filtered = [m for m in filtered if m.get("source") in ["mental_model", "merged"]]
+    # Expander tra cứu nhanh 152 mô hình gốc nếu người dùng cần nghiên cứu chi tiết
+    st.markdown("---")
+    with st.expander("📚 Tra cứu chi tiết danh mục 152 Mô hình & Nguyên lý gốc (Tùy chọn nâng cao)", expanded=False):
+        all_items = load_unified_farrow_catalog()
+        metrics = get_farrow_metrics()
+        st.caption(f"Tổng hợp {metrics['total']} mô hình & nguyên lý sạch (gồm {metrics['tier1_count']} siêu hạt nhân Tier 1).")
         
-        if search_kw.strip():
-            kw = search_kw.strip().lower()
-            filtered = [
-                m for m in filtered 
-                if kw in str(m.get("name_vi", "")).lower() 
-                or kw in str(m.get("name_en", "")).lower() 
-                or kw in str(m.get("pillar", "")).lower()
-                or kw in str(m.get("first_principle", "")).lower()
-                or kw in str(m.get("trigger_question", "")).lower()
-                or kw in str(m.get("inversion_trap", "")).lower()
-            ]
-
-        if not filtered:
-            st.info("Không tìm thấy mô hình hoặc nguyên lý nào phù hợp với bộ lọc hiện tại.")
-            return
-
-        st.caption(f"Đang hiển thị **{len(filtered)}** thẻ bài tinh hoa")
-        
-        # Grid display 2 columns
-        col_left, col_right = st.columns(2)
-        for idx, m in enumerate(filtered):
-            target_col = col_left if idx % 2 == 0 else col_right
-            with target_col:
-                tier_badge = '<span class="badge-tier1">⭐ TIER 1</span>' if m.get("tier") == 1 else ""
-                
-                source_label = "Khoa học" if m.get("source") == "scientific_principle" else ("Hợp nhất" if m.get("source") == "merged" else "Mô hình")
-                source_badge = f'<span class="badge-source">{source_label}</span>'
-                
-                farrow_pill = m.get("farrow_pillar", "root")
-                pillar_badge = f'<span class="badge-{farrow_pill}">{m.get("pillar", "Đa ngành")}</span>'
-                
-                name_en_display = f"<span style=\"font-size: 0.85rem; color: #64748b; font-weight: 500;\">({m.get('name_en')})</span>" if m.get('name_en') else ""
-                
-                # Formal definition box if distinct
-                formal_def = m.get("formal_definition", "")
-                formal_html = ""
-                if formal_def and formal_def != m.get("first_principle"):
-                    formal_html = f'<div style="background: rgba(99, 102, 241, 0.08); border-left: 3px solid #6366f1; padding: 8px 10px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 0.88rem; color: #c7d2fe;">📐 <b>Định luật chính xác:</b> {formal_def}</div>'
-
-                # Trap box
-                trap_text = m.get("inversion_trap", "")
-                trap_html = ""
-                if trap_text and trap_text not in ["None", ""]:
-                    trap_html = f'<div class="trap-box">🪤 <b>BẪY ĐẢO NGƯỢC / KHẢ BÁC:</b><br>{trap_text}</div>'
-
-                # Action leverage
-                leverage_text = m.get("elite_leverage", "")
-                leverage_html = ""
-                if leverage_text and leverage_text not in ["None", ""]:
-                    leverage_html = f'<div style="margin-top: 8px; font-size: 0.86rem; color: #a5b4fc;">🎯 <b>Đòn bẩy hành động:</b> {leverage_text}</div>'
-
-                card_html = f"""
+        c_f1, c_f2 = st.columns([1, 2])
+        with c_f1:
+            t_filter = st.selectbox("Lọc cấp độ:", ["Tất cả", "⭐ Tier 1 (Pareto)", "Cấp 2 & 3"], key="exp_tier")
+        with c_f2:
+            s_kw = st.text_input("Tìm kiếm:", placeholder="Nhập tên mô hình hoặc nguyên lý...", key="exp_search")
+            
+        display_items = all_items
+        if t_filter == "⭐ Tier 1 (Pareto)":
+            display_items = [x for x in display_items if x.get("tier") == 1]
+        elif t_filter == "Cấp 2 & 3":
+            display_items = [x for x in display_items if x.get("tier") in [2, 3]]
+            
+        if s_kw.strip():
+            kw_low = s_kw.strip().lower()
+            display_items = [x for x in display_items if kw_low in str(x.get("name_vi", "")).lower() or kw_low in str(x.get("name_en", "")).lower() or kw_low in str(x.get("first_principle", "")).lower()]
+            
+        st.caption(f"Tìm thấy {len(display_items)} kết quả:")
+        c_sub1, c_sub2 = st.columns(2)
+        for sub_idx, sub_item in enumerate(display_items[:20]):
+            target_sub = c_sub1 if sub_idx % 2 == 0 else c_sub2
+            with target_sub:
+                sub_tier = '<span class="badge-tier1">⭐ TIER 1</span>' if sub_item.get("tier") == 1 else ""
+                card_sub_html = f"""
                 <div class="model-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                        <div style="display: flex; gap: 6px; align-items: center;">
-                            {pillar_badge}
-                            {source_badge}
-                        </div>
-                        {tier_badge}
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge-{sub_item.get('farrow_pillar', 'root')}">{sub_item.get('pillar', 'Đa ngành')}</span>
+                        {sub_tier}
                     </div>
-                    <div class="model-title">#{m.get('id', '')} {m.get('name_vi', '')} {name_en_display}</div>
-                    <div class="model-rule">💡 <b>Bản chất 1 câu:</b> {m.get('first_principle', '')}</div>
-                    {formal_html}
-                    <div class="trigger-box">
-                        ⚡ <b>PHẢN XẠ 5 GIÂY:</b><br>
-                        <i>"{m.get('trigger_question', '')}"</i>
-                    </div>
-                    {trap_html}
-                    {leverage_html}
+                    <div class="model-title">#{sub_item.get('id', '')} {sub_item.get('name_vi', '')} <span style="font-size: 0.8rem; color: #64748b;">({sub_item.get('name_en', '')})</span></div>
+                    <div class="model-rule">💡 <b>Bản chất:</b> {sub_item.get('first_principle', '')}</div>
+                    <div class="trigger-box">⚡ <b>Phản xạ 5s:</b> <i>"{sub_item.get('trigger_question', '')}"</i></div>
                 </div>
                 """
-                render_html(card_html)
-
-    with tab_root:
-        st.markdown("**Bản chất Trụ 1:** Bóc trần sự thật vật lý gốc rễ, loại bỏ giả định rườm rà, lộn ngược tìm rủi ro chết người.")
-        render_unified_card_list(models_grouped["root"])
-
-    with tab_flow:
-        st.markdown("**Bản chất Trụ 2:** Bắt nhịp chuyển động dòng chảy, cập nhật xác suất liên tục, dự báo phản ứng dây chuyền bậc hai.")
-        render_unified_card_list(models_grouped["flow"])
-
-    with tab_strike:
-        st.markdown("**Bản chất Trụ 3:** Ra đòn bất đối xứng (Rủi ro tối thiểu, tiềm năng vô hạn), kích hoạt phản ứng dây chuyền chi phí nhỏ nhất.")
-        render_unified_card_list(models_grouped["strike"])
+                render_html(card_sub_html)
 
 # -----------------------------------------------------------------------------
-# PHÒNG 3: PHÒNG ÉP XUNG 10 PHÚT (10-MINUTE FOCUS SPRINT)
+# PHÒNG 2: PHÒNG ÉP XUNG 10 PHÚT (10-MINUTE FOCUS SPRINT)
 # -----------------------------------------------------------------------------
 elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
     st.markdown("### ⏱️ Phòng Ép Xung 10 Phút (The 10-Minute Focus Sprint)")
@@ -333,11 +234,41 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
 
     sprint_type = st.radio(
         "Chọn chế độ Sprint:",
-        ["🎲 Rút 3 Thẻ Ngẫu Nhiên (Bộ 3 Farrow Tarot)", "📖 Chọn Chủ Đề Lâu Đài Ký Ức"],
+        ["📖 Chọn Chủ Đề Lâu Đài Ký Ức", "🎲 Rút 3 Thẻ Ngẫu Nhiên (Bộ 3 Farrow Tarot)"],
         horizontal=True
     )
 
-    if sprint_type == "🎲 Rút 3 Thẻ Ngẫu Nhiên (Bộ 3 Farrow Tarot)":
+    if sprint_type == "📖 Chọn Chủ Đề Lâu Đài Ký Ức":
+        topics = get_all_farrow_topics()
+        sprint_topic_id = st.selectbox(
+            "Chọn chủ đề để chạy nước rút 10 phút:",
+            options=[t["id"] for t in topics],
+            format_func=lambda x: [f"{t['icon']} {t['title']} [{t.get('category', '')}]" for t in topics if t["id"] == x][0]
+        )
+        s_topic = get_farrow_topic_by_id(sprint_topic_id)
+        st.info(f"🎯 **Khẩu quyết 10 phút:** *\"{s_topic['tagline']}\"*")
+        
+        # Render 3 Trinity cards for the sprint topic
+        c_s1, c_s2, c_s3 = st.columns(3)
+        cols_s = [c_s1, c_s2, c_s3]
+        for col_s, chunk in zip(cols_s, s_topic["chunks"]):
+            with col_s:
+                card_html = f"""
+                <div class="trinity-card">
+                    <div class="anchor-badge">{chunk['anchor_icon']} {chunk['anchor_name']}</div>
+                    <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{chunk['label']}</h3>
+                    <div style="color: #38bdf8; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">{chunk.get('sub_modes', '')}</div>
+                    <div class="model-rule">💡 <b>Quy luật:</b><br>{chunk['principle']}</div>
+                    <div class="crazy-image-box">
+                        🧠 <b>ẢNH DỊ BIỆT:</b><br>{chunk['crazy_image']}
+                    </div>
+                    <div class="trigger-box">
+                        ⚡ <b>KÍCH HOẠT 5S:</b><br><i>"{chunk['trigger_question']}"</i>
+                    </div>
+                </div>
+                """
+                render_html(card_html)
+    else:
         if "random_trio" not in st.session_state or st.button("🔀 Rút Lại 3 Thẻ Tinh Hoa Mới", type="secondary"):
             st.session_state.random_trio = draw_random_farrow_sprint_trio()
         
@@ -358,36 +289,6 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
                     <div class="trigger-box">
                         ⚡ <b>KÍCH HOẠT 5S:</b><br>
                         <i>"{m.get('trigger_question', '')}"</i>
-                    </div>
-                </div>
-                """
-                render_html(card_html)
-    else:
-        topics = get_all_farrow_topics()
-        sprint_topic_id = st.selectbox(
-            "Chọn chủ đề để chạy nước rút 10 phút:",
-            options=[t["id"] for t in topics],
-            format_func=lambda x: [f"{t['icon']} {t['title']} [{t.get('category', '')}]" for t in topics if t["id"] == x][0]
-        )
-        s_topic = get_farrow_topic_by_id(sprint_topic_id)
-        st.info(f"🎯 **Khẩu quyết 10 phút:** *\"{s_topic['tagline']}\"*")
-        
-        # Render 3 Trinity cards for the sprint topic
-        c_s1, c_s2, c_s3 = st.columns(3)
-        cols_s = [c_s1, c_s2, c_s3]
-        for col_s, chunk in zip(cols_s, s_topic["chunks"]):
-            with col_s:
-                card_html = f"""
-                <div class="trinity-card">
-                    <div class="anchor-badge">{chunk['anchor_icon']} {chunk['anchor_name']}</div>
-                    <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{chunk['label']}</h3>
-                    <div style="color: #38bdf8; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">{chunk.get('sub_modes', '')}</div>
-                    <div class="model-rule">💡 <b>Quy luật:</b> {chunk['principle']}</div>
-                    <div class="crazy-image-box">
-                        🧠 <b>ẢNH DỊ BIỆT:</b><br>{chunk['crazy_image']}
-                    </div>
-                    <div class="trigger-box">
-                        ⚡ <b>KÍCH HOẠT 5S:</b><br><i>"{chunk['trigger_question']}"</i>
                     </div>
                 </div>
                 """
@@ -425,14 +326,14 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
         st.write("")
         if st.button("▶️ BẮT ĐẦU SPRINT 10 PHÚT", use_container_width=True, type="primary"):
             st.session_state.sprint_running = True
-            st.success("🔥 Đồng hồ đã kích hoạt! Hãy tập trung 100% vào tài liệu phía trên.")
+            st.success("🔥 Đồng hồ đã kích hoạt! Hãy tập trung 100% vào 3 khối hạt nhân phía trên.")
         if st.button("🔄 ĐẶT LẠI 10 PHÚT (RESET)", use_container_width=True):
             st.session_state.sprint_seconds = 600
             st.session_state.sprint_running = False
             st.rerun()
 
 # -----------------------------------------------------------------------------
-# PHÒNG 4: MÁY ÉP FARROW 1-CLICK (AI COMPRESSOR)
+# PHÒNG 3: MÁY ÉP FARROW 1-CLICK (AI COMPRESSOR)
 # -----------------------------------------------------------------------------
 elif app_mode == "⚡ Máy Ép Farrow 1-Click (AI Compressor)":
     st.markdown("### ⚡ Máy Ép Farrow 1-Click (Universal AI Compressor)")
@@ -470,7 +371,7 @@ elif app_mode == "⚡ Máy Ép Farrow 1-Click (AI Compressor)":
                     <div class="anchor-badge">{icons[idx]} MỎ NEO: {chunk.get('anchor', '')}</div>
                     <h3 style="color: #f8fafc; font-size: 1.2rem;">{chunk.get('label', '')}</h3>
                     <div style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 12px 0;">
-                        <b>Nguyên lý gốc:</b> {chunk.get('principle', '')}
+                        <b>Nguyên lý gốc:</b><br>{chunk.get('principle', '')}
                     </div>
                     <div class="crazy-image-box">
                         🧠 <b>HÌNH ẢNH DỊ BIỆT:</b><br>
@@ -487,7 +388,7 @@ elif app_mode == "⚡ Máy Ép Farrow 1-Click (AI Compressor)":
         st.success(f"🎯 **Đòn bẩy Bất đối xứng (Actionable Strike):** {res.get('asymmetric_action', '')}")
 
 # -----------------------------------------------------------------------------
-# PHÒNG 5: TRẠM THỞ BỤNG SẠC PIN
+# PHÒNG 4: TRẠM THỞ BỤNG SẠC PIN
 # -----------------------------------------------------------------------------
 elif app_mode == "🫁 Trạm Thở Bụng Sạc Pin":
     st.markdown("### 🫁 Trạm Thở Bụng Sạc Pin (Dave Farrow Belly Breathing)")
@@ -527,4 +428,4 @@ elif app_mode == "🫁 Trạm Thở Bụng Sạc Pin":
 # Footer
 # -----------------------------------------------------------------------------
 st.markdown("---")
-st.caption("⚡ **Elite Farrow Engine v2.1** — Hệ thống tư duy tinh hoa nén tối giản dành cho con người hiện đại.")
+st.caption("⚡ **Elite Farrow Engine v2.2** — Hệ thống tư duy tinh hoa nén tối giản dành cho con người hiện đại.")
