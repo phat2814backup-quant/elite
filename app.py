@@ -102,18 +102,36 @@ with st.sidebar:
 # -----------------------------------------------------------------------------
 if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
     st.markdown("### 🏛️ Lâu Đài Ký Ức: Chọn Chủ Đề Nén Sẵn")
-    st.caption("Mỗi chủ đề đã được tinh giản tuyệt đối theo Quy tắc số 3: 3 Khối hạt nhân gắn tại 3 mỏ neo phòng học của bạn.")
+    st.caption("Toàn bộ 152 Mô hình & Nguyên lý đã được phân loại và nén sẵn theo Quy tắc số 3: 3 Khối hạt nhân gắn tại 3 mỏ neo phòng học của bạn.")
 
-    topics = get_all_farrow_topics()
-    topic_options = {t["id"]: f"{t['icon']} {t['title']}" for t in topics}
+    all_topics = get_all_farrow_topics()
+    categories = ["Tất cả danh mục"] + list(dict.fromkeys(t.get("category", "Khác") for t in all_topics))
+
+    col_cat, col_top = st.columns([1, 2])
+    with col_cat:
+        selected_cat = st.selectbox("Lọc theo nhóm ngành:", categories)
+
+    filtered_topics = all_topics
+    if selected_cat != "Tất cả danh mục":
+        filtered_topics = [t for t in all_topics if t.get("category") == selected_cat]
+
+    topic_options = {t["id"]: f"{t['icon']} {t['title']}" for t in filtered_topics}
     
-    selected_id = st.selectbox(
-        "Chọn chủ đề tinh hoa cần nạp vào não:",
-        options=list(topic_options.keys()),
-        format_func=lambda x: topic_options[x]
-    )
+    with col_top:
+        selected_id = st.selectbox(
+            "Chọn chủ đề tinh hoa cần nạp vào não:",
+            options=list(topic_options.keys()),
+            format_func=lambda x: topic_options[x]
+        )
     
     topic = get_farrow_topic_by_id(selected_id)
+    
+    col_tinfo1, col_tinfo2 = st.columns([1, 3])
+    with col_tinfo1:
+        st.markdown(f"**Danh mục:** `{topic.get('category', 'Khác')}`")
+    with col_tinfo2:
+        st.caption(f"📖 *{topic.get('summary', '')}*")
+        
     st.info(f"🎯 **Khẩu quyết:** *\"{topic['tagline']}\"*")
     
     # Render 3 Columns
@@ -349,11 +367,31 @@ elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
         sprint_topic_id = st.selectbox(
             "Chọn chủ đề để chạy nước rút 10 phút:",
             options=[t["id"] for t in topics],
-            format_func=lambda x: [t["title"] for t in topics if t["id"] == x][0]
+            format_func=lambda x: [f"{t['icon']} {t['title']} [{t.get('category', '')}]" for t in topics if t["id"] == x][0]
         )
         s_topic = get_farrow_topic_by_id(sprint_topic_id)
-        for chunk in s_topic["chunks"]:
-            st.markdown(f"- **{chunk['anchor_icon']} {chunk['anchor_name']} ➔ {chunk['label']}**: {chunk['principle']}")
+        st.info(f"🎯 **Khẩu quyết 10 phút:** *\"{s_topic['tagline']}\"*")
+        
+        # Render 3 Trinity cards for the sprint topic
+        c_s1, c_s2, c_s3 = st.columns(3)
+        cols_s = [c_s1, c_s2, c_s3]
+        for col_s, chunk in zip(cols_s, s_topic["chunks"]):
+            with col_s:
+                card_html = f"""
+                <div class="trinity-card">
+                    <div class="anchor-badge">{chunk['anchor_icon']} {chunk['anchor_name']}</div>
+                    <h3 style="color: #f8fafc; font-size: 1.15rem; margin-top: 4px;">{chunk['label']}</h3>
+                    <div style="color: #38bdf8; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">{chunk.get('sub_modes', '')}</div>
+                    <div class="model-rule">💡 <b>Quy luật:</b> {chunk['principle']}</div>
+                    <div class="crazy-image-box">
+                        🧠 <b>ẢNH DỊ BIỆT:</b><br>{chunk['crazy_image']}
+                    </div>
+                    <div class="trigger-box">
+                        ⚡ <b>KÍCH HOẠT 5S:</b><br><i>"{chunk['trigger_question']}"</i>
+                    </div>
+                </div>
+                """
+                render_html(card_html)
 
     st.markdown("---")
 
