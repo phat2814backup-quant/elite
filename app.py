@@ -55,7 +55,10 @@ st.set_page_config(
 )
 
 # Load CSS
-css_path = os.path.join("assets", "style.css")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+css_path = os.path.join(base_dir, "assets", "style.css")
+if not os.path.exists(css_path):
+    css_path = os.path.join("assets", "style.css")
 if os.path.exists(css_path):
     with open(css_path, "r", encoding="utf-8") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -72,16 +75,23 @@ def render_html(html_content: str):
 
 def get_anchor_image_html(topic_id: str, chunk_id: str) -> str:
     """Tự động kiểm tra và nhúng ảnh mỏ neo siêu nhẹ định dạng WebP/PNG/SVG nếu có."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     for ext in [".webp", ".png", ".jpg", ".svg"]:
-        img_path = os.path.join("assets", "anchors", f"{topic_id}_{chunk_id}{ext}")
-        if os.path.exists(img_path):
-            try:
-                with open(img_path, "rb") as f:
-                    b64_data = base64.b64encode(f.read()).decode("utf-8")
-                mime = "image/svg+xml" if ext == ".svg" else f"image/{ext[1:]}"
-                return f'<div style="text-align: center; margin: 10px 0 14px 0;"><img src="data:{mime};base64,{b64_data}" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 4px 15px rgba(0,0,0,0.4);" alt="Mỏ neo trực quan" /></div>'
-            except Exception:
-                pass
+        candidate_paths = [
+            os.path.join(base_dir, "assets", "anchors", f"{topic_id}_{chunk_id}{ext}"),
+            os.path.join("assets", "anchors", f"{topic_id}_{chunk_id}{ext}"),
+            os.path.join("D:/02_HocTap/elite/assets/anchors", f"{topic_id}_{chunk_id}{ext}"),
+            os.path.join("D:/02_HocTap/elite_thinking/assets/anchors", f"{topic_id}_{chunk_id}{ext}")
+        ]
+        for img_path in candidate_paths:
+            if os.path.exists(img_path):
+                try:
+                    with open(img_path, "rb") as f:
+                        b64_data = base64.b64encode(f.read()).decode("utf-8")
+                    mime = "image/svg+xml" if ext == ".svg" else f"image/{ext[1:]}"
+                    return f'<div style="text-align: center; margin: 10px 0 14px 0;"><img src="data:{mime};base64,{b64_data}" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 4px 15px rgba(0,0,0,0.4);" alt="Mỏ neo trực quan" /></div>'
+                except Exception:
+                    pass
     return ""
 
 

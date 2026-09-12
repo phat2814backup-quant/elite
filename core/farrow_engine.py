@@ -150,25 +150,34 @@ def compress_with_farrow_ai(
             candidate_keys.append(k)
 
     if candidate_keys and genai is not None:
+        candidate_models = [model_name]
+        for m in ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-flash-latest"]:
+            if m not in candidate_models:
+                candidate_models.append(m)
+
         for idx, key in enumerate(candidate_keys):
             try:
                 genai.configure(api_key=key)
-                model = genai.GenerativeModel(
-                    model_name=model_name,
-                    system_instruction=FARROW_SYSTEM_PROMPT,
-                    generation_config={"response_mime_type": "application/json"}
-                )
-                prompt = f"Nén tài liệu sau đây thành 3 khối Farrow:\n\n\"\"\"\n{cleaned[:8000]}\n\"\"\""
-                response = model.generate_content(prompt, request_options={"timeout": 25})
-                if response and response.text:
-                    t = response.text.strip()
-                    if t.startswith("```"):
-                        lines = t.splitlines()
-                        if len(lines) >= 2 and lines[-1].startswith("```"):
-                            t = "\n".join(lines[1:-1]).strip()
-                    data = json.loads(t)
-                    if isinstance(data, dict) and "chunks" in data and len(data["chunks"]) == 3:
-                        return data
+                for cur_model in candidate_models:
+                    try:
+                        model = genai.GenerativeModel(
+                            model_name=cur_model,
+                            system_instruction=FARROW_SYSTEM_PROMPT,
+                            generation_config={"response_mime_type": "application/json"}
+                        )
+                        prompt = f"Nén tài liệu sau đây thành 3 khối Farrow:\n\n\"\"\"\n{cleaned[:8000]}\n\"\"\""
+                        response = model.generate_content(prompt, request_options={"timeout": 25})
+                        if response and response.text:
+                            t = response.text.strip()
+                            if t.startswith("```"):
+                                lines = t.splitlines()
+                                if len(lines) >= 2 and lines[-1].startswith("```"):
+                                    t = "\n".join(lines[1:-1]).strip()
+                            data = json.loads(t)
+                            if isinstance(data, dict) and "chunks" in data and len(data["chunks"]) == 3:
+                                return data
+                    except Exception:
+                        continue
             except Exception as e:
                 # Nếu key này lỗi, tự động thử key tiếp theo trong danh sách xoay tua
                 continue
