@@ -49,6 +49,13 @@ from core.macro_evolution import (
     SAMPLE_MACRO_TRENDS,
     analyze_macro_radar,
 )
+from core.db_storage import (
+    load_macro_scans,
+    save_macro_scan,
+    delete_macro_scan,
+    get_supabase_client
+)
+
 
 # -----------------------------------------------------------------------------
 # Page Configuration
@@ -446,7 +453,11 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
                 elif "error" in res_radar and not res_radar.get("trend_summary"):
                     st.error(f"Lỗi: {res_radar['error']}")
                 else:
-                    st.success("✅ Đã hoàn tất bóc tách thế cuộc!")
+                    # Tự động lưu bản quét vào Supabase Cloud & Local Storage
+                    saved_ok = save_macro_scan(trend_text.strip(), res_radar)
+                    if saved_ok:
+                        st.toast("☁️ Đã lưu bản quét vào Supabase Cloud!", icon="💾")
+                    st.success("✅ Đã hoàn tất bóc tách thế cuộc & Đã lưu vào Kho Lịch sử!")
                     st.markdown(f"#### 🎯 Bản Chất Cốt Lõi: {res_radar.get('trend_summary', '')}")
                     st.info(f"⚡ **Chi Phí Giao Dịch Bị Kéo Tụt:** {res_radar.get('transaction_costs_impact', '')}")
                     c_r1, c_r2 = st.columns(2)
@@ -470,6 +481,81 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
                         st.markdown("#### 🧭 Playbook Hành Động")
                         for act in res_radar.get("action_playbook_for_individual", []):
                             st.markdown(f"- 🚀 {act}")
+
+            # -------------------------------------------------------------
+            # KHO LƯU TRỮ CÁC LẦN QUÉT THẾ CUỘC (LỊCH SỬ PHÂN TÍCH BỀN VỮNG)
+            # -------------------------------------------------------------
+            st.divider()
+            saved_scans = load_macro_scans()
+            sb_client = get_supabase_client()
+            sync_badge = "☁️ Supabase Cloud (Đồng bộ vĩnh viễn)" if sb_client is not None else "💾 Cục bộ (Local JSON)"
+
+            st.markdown(f"### 📚 Kho Lưu Trữ Lịch Sử Quét Thế Cuộc ({len(saved_scans)} bản ghi)")
+            st.caption(f"Trạng thái đồng bộ: **{sync_badge}**. Bất kỳ biến động vĩ mô nào bạn quét đều được lưu giữ để đọc lại mọi lúc mọi nơi trên điện thoại hoặc máy tính.")
+
+            if saved_scans:
+                s_search = st.text_input(
+                    "🔍 Tìm kiếm trong kho lưu trữ:",
+                    placeholder="Nhập từ khóa (vd: chip não, robot, năng lượng, ai agents...)",
+                    key="vault_history_search"
+                )
+                filtered_scans = saved_scans
+                if s_search.strip():
+                    kw = s_search.strip().lower()
+                    filtered_scans = [
+                        s for s in saved_scans
+                        if kw in s.get("query", "").lower() or kw in str(s.get("result", {})).lower()
+                    ]
+
+                if not filtered_scans:
+                    st.info("Không tìm thấy bản ghi nào khớp với từ khóa.")
+
+                for idx, sc in enumerate(filtered_scans):
+                    sc_id = sc.get("id", f"scan_{idx}")
+                    sc_time = sc.get("created_at", "Gần đây")
+                    sc_query = sc.get("query", "Không có tiêu đề")
+                    sc_res = sc.get("result", {})
+
+                    short_title = sc_query[:75] + ("..." if len(sc_query) > 75 else "")
+                    with st.expander(f"📑 [{sc_time}] {short_title}", expanded=(idx == 0 and len(filtered_scans) == 1)):
+                        col_h_left, col_h_right = st.columns([4, 1])
+                        with col_h_left:
+                            st.markdown(f"**🎯 Xu hướng / Biến động đã quét:**  \n*{sc_query}*")
+                        with col_h_right:
+                            if st.button("🗑️ Xóa", key=f"btn_del_scan_{sc_id}", help="Xóa bản ghi này khỏi lịch sử"):
+                                delete_macro_scan(sc_id)
+                                st.success("Đã xóa bản ghi!")
+                                st.rerun()
+
+                        st.markdown(f"**🎯 Bản Chất Cốt Lõi:** {sc_res.get('trend_summary', '')}")
+                        st.info(f"⚡ **Chi Phí Giao Dịch Bị Kéo Tụt:** {sc_res.get('transaction_costs_impact', '')}")
+
+                        c_s1, c_s2 = st.columns(2)
+                        with c_s1:
+                            st.error("📉 **Nguồn Lực Bị Trượt Giá Về 0:**")
+                            for item in sc_res.get("commoditized_assets", []):
+                                st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
+                        with c_s2:
+                            st.success("💎 **Nút Thắt Khan Hiếm Mới:**")
+                            for item in sc_res.get("complementary_scarcities", []):
+                                st.markdown(f"- **{item.get('asset', '')}**: {item.get('why', '')}")
+
+                        st.markdown("👁️ **Nước Cờ Chiến Lược Của Giới Elite:**")
+                        for move in sc_res.get("elite_strategic_moves", []):
+                            st.markdown(f"- ♟️ {move}")
+
+                        c_sb1, c_sb2 = st.columns(2)
+                        with c_sb1:
+                            st.markdown("🕸️ **Mô Hình Hạt Nhân Kích Hoạt:**")
+                            for m_item in sc_res.get("activated_mental_models", []):
+                                st.markdown(f"- `{m_item.get('model_name', '')}`: {m_item.get('mechanism', '')}")
+                        with c_sb2:
+                            st.markdown("🧭 **Playbook Hành Động:**")
+                            for act in sc_res.get("action_playbook_for_individual", []):
+                                st.markdown(f"- 🚀 {act}")
+            else:
+                st.info("💡 Chưa có bản quét nào được lưu. Hãy nhập một xu hướng ở trên và bấm **'📡 Quét Đọc Vị Theo First Principles'**, kết quả sẽ tự động lưu vĩnh viễn vào đây để bạn đọc lại bất cứ lúc nào!")
+
 
 elif app_mode == "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)":
     st.markdown("### ⏱️ Phòng Ép Xung 10 Phút (The 10-Minute Focus Sprint)")
