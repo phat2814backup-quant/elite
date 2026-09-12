@@ -1,0 +1,21 @@
+[
+  {
+    "id": "DEC-20260905-EFB6F0",
+    "title": "trading xau từ nav 10000 lên 50000 trong vòng 1 năm",
+    "status": "pending",
+    "category": "📈 Tài chính, Chứng khoán & Đầu tư",
+    "created_at": "2026-09-05",
+    "hypothesis": "Mục tiêu là tăng NAV từ 10.000 lên 50.000 trong 1 năm, tương đương mức lợi nhuận 400% (gấp 5 lần vốn ban đầu). Đây là một mục tiêu cực kỳ tham vọng và đòi hỏi tỷ lệ lợi nhuận hàng tháng hoặc hàng tuần rất cao, vượt xa các chuẩn mực tăng trưởng bền vững và có xác suất thành công thấp đối với hầu hết",
+    "review_date": "2026-12-04",
+    "review_days": 90,
+    "reviewed_at": null,
+    "outcome_score": null,
+    "actual_outcome": "",
+    "confidence_pct": 75,
+    "inversion_traps": "Để chắc chắn không đạt được mục tiêu 50.000 hoặc thậm chí mất toàn bộ 10.000: sử dụng đòn bẩy quá mức không kiểm soát, không có điểm dừng lỗ (stop-loss), giao dịch theo cảm xúc, không có chiến lược rõ",
+    "lessons_learned": "",
+    "source_analysis": "",
+    "calibration_diff": null,
+    "second_order_consequences": "Nếu đạt được lợi nhuận cao liên tục (first-order): Có thể dẫn đến sự tự tin thái quá, làm tăng kích thước vị thế mà không có cơ sở, bỏ qua rủi ro, và cuối cùng dẫn đến tổn thất lớn. (second-order). Nế"
+  }
+]
