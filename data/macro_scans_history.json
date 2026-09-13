@@ -1,1 +1,318 @@
-[]
+[
+  {
+    "id": "scan_1789285463403",
+    "query": "AI định hướng nghề nghiệp và phát triển kỹ năng chống thất nghiệp AI.",
+    "result": {
+      "trend_summary": "AI đang biến đổi căn bản thị trường lao động bằng cách tự động hóa các nhiệm vụ lặp lại, buộc các cá nhân phải liên tục tái đào tạo và phát triển kỹ năng để thích nghi. Điều này thúc đẩy nhu cầu về các công cụ AI định hướng nghề nghiệp và phát triển kỹ năng, tập trung vào năng lực độc đáo của con người.",
+      "commoditized_assets": [
+        {
+          "why": "AI có thể tổng hợp, phân tích dữ liệu lớn và đưa ra khuyến nghị cá nhân hóa vượt trội, khiến thông tin chung chung trở nên vô giá trị biên.",
+          "asset": "Thông tin nghề nghiệp và lộ trình kỹ năng tiêu chuẩn, không cá nhân hóa"
+        },
+        {
+          "why": "AI có thể thực hiện các nhiệm vụ này nhanh hơn, chính xác hơn và với chi phí thấp hơn con người, đẩy giá trị của chúng về 0.",
+          "asset": "Kỹ năng thực hiện các nhiệm vụ lặp lại, có quy tắc rõ ràng"
+        },
+        {
+          "why": "Thị trường ngày càng ưu tiên các kỹ năng có thể chứng minh qua dự án, danh mục đầu tư và khả năng thích ứng, giảm sự phụ thuộc vào 'tấm bằng' như một proxy duy nhất cho năng lực.",
+          "asset": "Giá trị của bằng cấp truyền thống đơn thuần (chưa được chứng minh bằng kỹ năng thực tế)"
+        }
+      ],
+      "elite_strategic_moves": [
+        "Đầu tư và thâu tóm các nền tảng AI-driven talent, học tập và phát triển kỹ năng, nhằm kiểm soát cơ sở hạ tầng định hình lực lượng lao động tương lai.",
+        "Tái định nghĩa các tiêu chuẩn chứng nhận và quy trình đánh giá kỹ năng, chuyển dịch từ bằng cấp truyền thống sang các minh chứng năng lực và meta-skill phù hợp với kỷ nguyên AI.",
+        "Thiết lập các khung pháp lý và đạo đức cho AI trong tuyển dụng và phát triển nghề nghiệp, định hình cách dữ liệu cá nhân được sử dụng và đảm bảo quyền tiếp cận công bằng đến các công cụ AI thiết yếu."
+      ],
+      "activated_mental_models": [
+        {
+          "mechanism": "AI sẽ chiếm ưu thế ở những nhiệm vụ nó có lợi thế so sánh (tốc độ, quy mô, độ chính xác), buộc con người phải chuyển dịch sang những lĩnh vực mà họ vẫn có lợi thế so sánh riêng (sáng tạo, cảm xúc, chiến lược).",
+          "model_name": "Nguyên lý Lợi thế So sánh (Comparative Advantage)"
+        },
+        {
+          "mechanism": "Khi các kỹ năng dễ tự động hóa trở nên dư thừa (commoditized) và giá trị biên của chúng giảm, các kỹ năng nhân bản, phức tạp và thích ứng sẽ trở nên khan hiếm và có giá trị kinh tế cao hơn.",
+          "model_name": "Nguyên lý Khan hiếm (Scarcity Principle)"
+        }
+      ],
+      "complementary_scarcities": [
+        {
+          "why": "Khả năng tư duy phản biện, sáng tạo, trí tuệ cảm xúc, giải quyết vấn đề phức tạp và khả năng học hỏi liên tục là những năng lực AI khó sao chép, trở thành nút thắt khan hiếm mới.",
+          "asset": "Các 'meta-skill' mang tính người cao cấp"
+        },
+        {
+          "why": "Việc hiểu cách giao tiếp, chỉ đạo, và sử dụng AI như một công cụ tăng cường năng lực bản thân trở thành kỹ năng thiết yếu để đạt được hiệu suất vượt trội.",
+          "asset": "Khả năng cộng tác hiệu quả với AI (Human-AI Interoperability)"
+        },
+        {
+          "why": "Những người có kiến thức sâu rộng trong một lĩnh vực cụ thể và hiểu cách áp dụng AI để đổi mới, giải quyết vấn đề trong lĩnh vực đó sẽ tạo ra giá trị kinh tế lớn.",
+          "asset": "Chuyên môn sâu (Domain Expertise) kết hợp với nhận thức về AI"
+        }
+      ],
+      "transaction_costs_impact": "Chi phí tìm kiếm thông tin về thị trường lao động, xác định khoảng cách kỹ năng và lựa chọn lộ trình học tập hiệu quả đang giảm mạnh nhờ khả năng phân tích và cá nhân hóa của AI.",
+      "action_playbook_for_individual": [
+        "Khuyến nghị 1: DỪNG lại việc dựa dẫm vào các bằng cấp truyền thống mà không có kỹ năng thực tế chứng minh, và ngừng theo đuổi các công việc/kỹ năng dễ dàng bị AI tự động hóa hoàn toàn.",
+        "Khuyến nghị 2: TÍCH LŨY các 'meta-skill' như tư duy phản biện, sáng tạo, trí tuệ cảm xúc, khả năng học hỏi nhanh và giải quyết vấn đề phức tạp. Đồng thời, trở thành chuyên gia trong một lĩnh vực hẹp kết hợp với khả năng ứng dụng AI.",
+        "Khuyến nghị 3: Xây dựng vị thế đòn bẩy bằng cách trở thành một 'kẻ phiên dịch' giữa con người và AI, một người kết nối những ý tưởng phức tạp, hoặc một người sở hữu/kiểm soát dữ liệu/thuật toán độc quyền trong một lĩnh vực ngách."
+      ]
+    },
+    "created_at": "2026-09-13 07:44:23"
+  },
+  {
+    "id": "scan_1789268143530",
+    "query": "Thiết kế các module Socratic tùy chỉnh theo lĩnh vực (domain-specific Socratic modulators) và phương pháp tích hợp sâu với đồ thị tri thức (knowledge graphs) chuyên ngành, cho phép AI gia sư tạo ra các truy vấn phản biện chính xác, có liên quan và kích thích tư duy sâu sắc trong các môn học phức tạp như lập trình, y học, luật pháp hoặc triết học.",
+    "result": {
+      "trend_summary": "Xu hướng này đại diện cho sự chuyển dịch từ việc AI tổng hợp thông tin thụ động sang việc AI chủ động giải phẫu và nâng cấp cấu trúc nhận thức của con người thông qua logic hình thức và phương pháp đỡ đẻ tri thức. Bản chất gốc rễ là sự công nghiệp hóa mô hình giáo dục tinh hoa 1-1, biến quá trình rèn luyện tư duy phản biện cấp cao từ một đặc quyền quý tộc thành một tiện ích tính toán có chi phí biên bằng không.",
+      "commoditized_assets": [
+        {
+          "why": "Nội dung tĩnh và phương pháp truyền thụ một chiều không thể cạnh tranh với khả năng vấn đáp thích ứng thời gian thực dựa trên đồ thị tri thức.",
+          "asset": "Giảng viên trung cấp và các khóa học đóng gói một chiều (MOOCs)"
+        },
+        {
+          "why": "Việc truy xuất dữ liệu có cấu trúc từ đồ thị tri thức đạt độ chính xác gần như tuyệt đối, triệt tiêu giá trị kinh tế của trí nhớ dung lượng cao.",
+          "asset": "Kỹ năng ghi nhớ thông tin và tổng hợp tài liệu chuyên ngành"
+        }
+      ],
+      "elite_strategic_moves": [
+        "Tư nhân hóa và đóng kín các đồ thị tri thức cấp cao trong các lĩnh vực đặc quyền (y khoa chính xác, cấu trúc thuế tối ưu, thiết kế bán dẫn) để bảo vệ rào cản sinh lợi.",
+        "Tái cấu trúc hệ thống tuyển dụng tinh hoa: Thay thế hoàn toàn bằng cấp truyền thống bằng các bài sát hạch Socrates đối kháng đa chiều với AI để sàng lọc năng lực giải quyết vấn đề thực tế.",
+        "Triển khai các 'Cognitive Sandbox' riêng biệt cho thế hệ kế cận, sử dụng AI Socrates để huấn luyện tư duy chiến lược và năng lực ra quyết định từ độ tuổi rất nhỏ."
+      ],
+      "activated_mental_models": [
+        {
+          "mechanism": "Khi việc cung cấp câu trả lời và thông tin chuyên môn bị hàng hóa hóa (commoditized), lợi nhuận hấp dẫn dịch chuyển hoàn toàn sang việc thiết kế cấu trúc truy vấn (Socratic modulators) và nền tảng dữ liệu logic nền (Knowledge Graphs).",
+          "model_name": "Law of Conservation of Attractive Profits (Định luật Bảo toàn Lợi nhuận Hấp dẫn)"
+        },
+        {
+          "mechanism": "Thay vì nhồi nhét kết quả, việc liên tục đặt câu hỏi phản biện sẽ buộc người học tự bộc lộ mâu thuẫn trong mô hình tư duy của họ, từ đó tự tái cấu trúc nhận thức ở tầng sâu.",
+          "model_name": "Socratic/Maieutic Method (Phương pháp Đỡ đẻ Tri thức)"
+        }
+      ],
+      "complementary_scarcities": [
+        {
+          "why": "Hệ thống chỉ thông minh bằng chất lượng các liên kết bản thể luận; tri thức kinh nghiệm chưa được số hóa trở thành nút thắt giá trị cao nhất.",
+          "asset": "Đồ thị tri thức (Ontology) độc quyền và dữ liệu ngầm định (Tacit Knowledge)"
+        },
+        {
+          "why": "Khi công cụ phản biện tối ưu được phổ quát hóa, sự khác biệt duy nhất giữa các cá nhân là năng lực chủ động đặt câu hỏi và độ bền bỉ khi bị bẻ gãy giả định sai lầm.",
+          "asset": "Ý chí tự thân (Personal Agency) và Năng lực chịu đựng áp lực nhận thức (Cognitive Grit)"
+        }
+      ],
+      "transaction_costs_impact": "Chi phí chẩn đoán lỗ hổng nhận thức (cognitive debugging cost) và chi phí kiểm chứng tính chính xác của suy luận chuyên ngành bị kéo tụt thẳng đứng; việc cá nhân hóa lộ trình tri thức phức tạp theo thời gian thực không còn phụ thuộc vào thời gian hữu hạn của các chuyên gia đầu ngành.",
+      "action_playbook_for_individual": [
+        "DỪNG việc tiêu thụ thụ động các khóa học dạng video bài giảng hoặc ghi nhớ tài liệu chuyên môn thuần túy; từ bỏ việc học tập không có phản hồi đối kháng.",
+        "TÍCH LŨY năng lực siêu nhận thức (metacognition) và kỹ năng mô hình hóa miền kiến thức thành các đồ thị logic (nodes & edges) thay vì văn bản tuyến tính.",
+        "XÂY DỰNG đòn bẩy cá nhân bằng cách tự tạo một AI Socratic Mentor riêng biệt cho chuyên ngành của mình, biến nó thành công cụ bẻ gãy thiên kiến và gia tốc chu kỳ học tập lên gấp 10 lần."
+      ]
+    },
+    "created_at": "2026-09-13 02:55:43"
+  },
+  {
+    "id": "scan_1789260870646",
+    "query": "High-fidelity physics simulation engines and photorealistic synthetic sensor data generation for robotics sim-to-real transfer",
+    "result": {
+      "trend_summary": "Xu hướng này chuyển dịch việc huấn luyện robot từ giới hạn của thời gian vật lý sang đòn bẩy quy mô tính toán của chip bán dẫn. Bản chất là biến chi phí thu thập kinh nghiệm của phần cứng từ biên giới động năng (tốn kém, hao mòn, nguy hiểm) thành bài toán tối ưu hóa thuật toán song song hóa vô hạn trong thế giới ảo.",
+      "commoditized_assets": [
+        {
+          "why": "Việc lái robot vật lý bằng tay để lấy dữ liệu mẫu bị thay thế hoàn toàn bởi các pipeline tự sinh hàng triệu kịch bản giả lập có gán nhãn tự động chuẩn xác tuyệt đối.",
+          "asset": "Đội ngũ teleoperation và thu thập dữ liệu thủ công ngoài đời thực"
+        },
+        {
+          "why": "Dữ liệu 2D phẳng thông thường không chứa vector lực, ma sát tiếp xúc và biến dạng vật liệu, khiến chúng mất giá trị so với dữ liệu tổng hợp photorealistic có đủ thông tin vật lý đa giác quan.",
+          "asset": "Dữ liệu video thực tế đơn lẻ không có chiều sâu vật lý"
+        },
+        {
+          "why": "Các chính sách Reinforcement Learning (Học tăng cường) huấn luyện qua hàng tỷ giờ mô phỏng giải quyết triệt để các bài toán động lực học phi tuyến mà toán học truyền thống bó tay.",
+          "asset": "Kỹ sư điều khiển học cổ điển dựa trên mô hình hóa toán học tĩnh (Classical PID/Kinematics)"
+        }
+      ],
+      "elite_strategic_moves": [
+        "Khóa chặt chuỗi giá trị bằng việc tích hợp ngược Sim-Platform với Phần cứng xử lý (như NVIDIA xây dựng Isaac Sim gắn chặt với hệ sinh thái GPU và Omniverse).",
+        "Âm thầm mua lại hoặc hợp tác độc quyền với các cơ sở thử nghiệm va đập, phòng thí nghiệm khoa học vật liệu để độc quyền hóa dữ liệu 'hiệu chỉnh khe hở thực tế' (Reality Gap calibration data).",
+        "Chuyển đổi mô hình kinh doanh từ bán robot phần cứng sang cấp phép 'Bộ não nền tảng' (Foundation Robotics Model) đã vượt qua hàng nghìn năm tuổi mô phỏng."
+      ],
+      "activated_mental_models": [
+        {
+          "mechanism": "Các phương pháp tận dụng triệt để năng lực tính toán (compute) thông qua mô phỏng vô hạn sẽ luôn nghiền nát các phương pháp dựa trên sự khéo léo hay tri thức trực giác đóng khung của con người.",
+          "model_name": "The Bitter Lesson (Rich Sutton)"
+        },
+        {
+          "mechanism": "Khi việc thu thập dữ liệu hành vi thực tế bị đại trà hóa (commoditized), lợi nhuận hấp dẫn bắt buộc phải dịch chuyển sang lớp engine mô phỏng vật lý và phần cứng chấp hành dung sai thấp.",
+          "model_name": "Law of Conservation of Attractive Profits (Christensen)"
+        },
+        {
+          "mechanism": "Tách rời tốc độ học tập của trí tuệ nhân tạo khỏi tốc độ trôi của thời gian vật lý (1 giây thực tế = hàng triệu giây mô phỏng đa luồng).",
+          "model_name": "Decoupling Principle (Nguyên lý phân tách)"
+        }
+      ],
+      "complementary_scarcities": [
+        {
+          "why": "Độ chính xác của sim-to-real phụ thuộc vào khả năng mô phỏng tiếp xúc vi mô, độ trễ cơ học và ma sát mềm; ai nắm engine chuẩn xác nhất sẽ mở khóa được zero-shot transfer.",
+          "asset": "Công nghệ engine vi sai mô phỏng vật lý phi tuyến (Differentiable soft-body & tactile physics engines)"
+        },
+        {
+          "why": "Để giả lập không bị lệch chuẩn (reality gap), cần dữ liệu thực nghiệm cực hiếm về các điểm gãy, trượt ma sát và va đập dị biệt để căn chỉnh lại engine.",
+          "asset": "Dữ liệu 'Ground-Truth Edge Cases' từ thế giới thực để hiệu chỉnh Simulation (Real-to-Sim)"
+        },
+        {
+          "why": "Khi não bộ robot đạt phản xạ mức millisecond nhờ sim, giới hạn nút thắt chuyển dịch sang độ bền vật lý và tốc độ phản ứng cơ học của động cơ chấp hành.",
+          "asset": "Phần cứng cơ điện tử chịu được tần số phản hồi cực cao (High-bandwidth actuators & sensors)"
+        }
+      ],
+      "transaction_costs_impact": "Chi phí thử-sai thực địa (trial-and-error cost), chi phí rủi ro hủy hoại phần cứng khi va chạm, và chi phí gán nhãn dữ liệu cảm biến thực tế bị kéo tụt gần như về 0.",
+      "action_playbook_for_individual": [
+        "DỪNG việc đầu tư thời gian vào việc lập trình các quy tắc điều khiển robot thủ công (hardcoded heuristics) hoặc thu thập dữ liệu camera 2D thô mà không có siêu dữ liệu 3D/vật lý đi kèm.",
+        "TÍCH LŨY năng lực làm chủ các công cụ mô phỏng vật lý thế hệ mới (Isaac Sim, MuJoCo, Genesis) và kỹ thuật Domain Randomization để làm hẹp khoảng cách Sim-to-Real.",
+        "XÂY DỰNG vị thế đòn bẩy ở vai trò 'Kiến trúc sư kiểm chuẩn Sim-to-Real': người thiết kế các bài kiểm tra thực địa đo lường sai số giữa giả lập và thực tế, làm chủ quy trình Real-to-Sim-to-Real loop."
+      ]
+    },
+    "created_at": "2026-09-13 00:54:30"
+  },
+  {
+    "id": "scan_1789258382993",
+    "query": "Đánh giá các tiến bộ trong vật liệu sinh học tương thích (ví dụ: polymer linh hoạt, vật liệu xốp, lớp phủ chống viêm, hydrogel tự phục hồi) và kỹ thuật thiết kế giao diện (ví dụ: kiến trúc điện cực phân tán, cấp nguồn không dây, giao diện quang học) nhằm kéo dài tuổi thọ, giảm phản ứng miễn dịch và duy trì hiệu suất thu nhận/kích thích tín hiệu của BCI xâm lấn tối thiểu trong nhiều thập kỷ, tối ưu hóa cho ứng dụng lâm sàng và tăng cường nhận thức dài hạn.",
+    "result": {
+      "trend_summary": "Tiến bộ trong vật liệu sinh học và kỹ thuật giao diện đang kéo dài đáng kể tuổi thọ và hiệu suất của BCI xâm lấn tối thiểu. Điều này biến BCI từ giải pháp điều trị tạm thời thành công cụ tăng cường nhận thức và phục hồi chức năng lâu dài, tích hợp sâu vào con người.",
+      "commoditized_assets": [
+        {
+          "why": "Khi BCI cung cấp khả năng truy cập thông tin, học kỹ năng hoặc thực hiện tính toán siêu tốc, lợi thế của 'học nhanh' theo cách truyền thống giảm giá trị biên.",
+          "asset": "Khả năng học hỏi/thích nghi nhận thức truyền thống"
+        },
+        {
+          "why": "BCI dài hạn có thể cung cấp giải pháp tăng cường nhận thức trực tiếp, hiệu quả hơn, làm giảm nhu cầu đối với các liệu pháp dược phẩm hoặc vật lý trị liệu hiện hành.",
+          "asset": "Các phương pháp điều trị suy giảm nhận thức nhẹ truyền thống"
+        },
+        {
+          "why": "Tuổi thọ thiết bị kéo dài làm giảm đáng kể nhu cầu phẫu thuật tái cấy ghép hoặc điều chỉnh, làm suy giảm giá trị của các quy trình này.",
+          "asset": "Quy trình phẫu thuật BCI lặp lại"
+        },
+        {
+          "why": "Với vật liệu sinh học tương thích tối ưu, dữ liệu về các phản ứng miễn dịch cấp tính và ngắn hạn sẽ trở nên ít giá trị hơn so với dữ liệu tương thích dài hạn.",
+          "asset": "Dữ liệu lâm sàng về phản ứng miễn dịch ngắn hạn"
+        }
+      ],
+      "elite_strategic_moves": [
+        "Kiểm soát cơ sở hạ tầng dữ liệu neural & thuật toán độc quyền: Nắm giữ các nền tảng thu thập, xử lý và diễn giải dữ liệu neural cá nhân hóa, cũng như các thuật toán AI điều khiển BCI để tạo ra lợi thế cạnh tranh và rào cản gia nhập.",
+        "Định hình khuôn khổ pháp lý & đạo đức: Chủ động tham gia vào việc xây dựng các quy định về quyền riêng tư dữ liệu neural, quyền sở hữu, và giới hạn sử dụng công nghệ BCI nhằm tạo lợi thế cho các giải pháp của mình.",
+        "Thâu tóm tài năng & R&D đột phá: Tuyển dụng và đầu tư mạnh vào các chuyên gia hàng đầu về vật liệu sinh học, kỹ thuật thần kinh, AI và đạo đức học để dẫn đầu trong việc phát triển thế hệ BCI tiếp theo và định hình tương lai công nghệ.",
+        "Xây dựng hệ sinh thái dịch vụ BCI tích hợp: Phát triển chuỗi giá trị từ sản xuất thiết bị, đến dịch vụ cấy ghép, bảo trì, nâng cấp phần mềm và các ứng dụng giá trị gia tăng để tạo ra rào cản gia nhập cao và sự phụ thuộc vào hệ sinh thái.",
+        "Tích hợp BCI vào các ngành công nghiệp chiến lược: Tìm cách tích hợp công nghệ BCI không chỉ vào y tế mà còn vào quân sự, giáo dục, giải trí và các lĩnh vực khác để mở rộng thị trường và tối đa hóa tác động, tạo ra các ứng dụng độc quyền."
+      ],
+      "activated_mental_models": [
+        {
+          "mechanism": "Xu hướng này bóc tách bản chất của giao diện thần kinh (kết nối vật lý, tín hiệu điện) và vật liệu sinh học (tương tác với cơ thể) để tái thiết kế từ đầu, vượt qua các giới hạn của công nghệ cũ.",
+          "model_name": "First-Principles Thinking"
+        },
+        {
+          "mechanism": "Sự kết hợp đồng thời của tiến bộ vật liệu (tuổi thọ), kỹ thuật giao diện (hiệu suất) và cấp nguồn (không dây) tạo ra hiệu ứng cộng hưởng, biến BCI từ giải pháp ngắn hạn thành công nghệ chuyển đổi dài hạn.",
+          "model_name": "The Lollapalooza Effect"
+        },
+        {
+          "mechanism": "Khi công nghệ tiến bộ nhanh chóng, các tập đoàn lớn sẽ tìm cách định hình các quy định còn non nớt hoặc tận dụng các kẽ hở pháp lý để có lợi thế cạnh tranh về dữ liệu, thử nghiệm và ứng dụng BCI.",
+          "model_name": "Regulatory Arbitrage / Regulatory Capture"
+        },
+        {
+          "mechanism": "Những người tiên phong phát triển và kiểm soát công nghệ BCI dài hạn sẽ có lợi thế thông tin khổng lồ về khả năng, giới hạn và dữ liệu người dùng, tạo ra rào cản gia nhập cho người đến sau.",
+          "model_name": "Information Asymmetry"
+        },
+        {
+          "mechanism": "Nếu BCI trở thành một nền tảng mở, giá trị của nó sẽ tăng theo số lượng người dùng và nhà phát triển ứng dụng, tạo ra chu kỳ phản hồi tích cực và sự thống trị của người dẫn đầu thị trường.",
+          "model_name": "Platform Effects"
+        }
+      ],
+      "complementary_scarcities": [
+        {
+          "why": "Thông tin não bộ được thu thập và phân tích liên tục trong nhiều thập kỷ là tài sản độc nhất, phản ánh bản chất nhận thức của cá nhân và tạo ra lợi thế cạnh tranh.",
+          "asset": "Dữ liệu neural cá nhân hóa & độc quyền"
+        },
+        {
+          "why": "Sự tích hợp sâu rộng và lâu dài của BCI đòi hỏi các nguyên tắc đạo đức và pháp lý toàn diện, linh hoạt để quản lý quyền riêng tư, quyền sở hữu và trách nhiệm, trở thành nút thắt khan hiếm.",
+          "asset": "Khung đạo đức & quy định tích hợp BCI"
+        },
+        {
+          "why": "Những người có khả năng thiết kế, tối ưu hóa và diễn giải giao diện phức tạp giữa BCI, AI và hệ thống thần kinh trong dài hạn sẽ cực kỳ hiếm hoi và có giá trị cao.",
+          "asset": "Chuyên gia giao thoa Sinh học-AI & Thần kinh học điện toán"
+        },
+        {
+          "why": "Các thuật toán độc quyền để duy trì, cải thiện và tùy chỉnh hiệu suất BCI trong nhiều thập kỷ là cốt lõi để giữ vững giá trị và hiệu quả của hệ thống.",
+          "asset": "Tài sản trí tuệ về thuật toán tối ưu hóa giao diện neural dài hạn"
+        },
+        {
+          "why": "Các vật liệu có khả năng tích hợp hoàn hảo với mô sinh học mà không gây phản ứng tiêu cực trong hàng chục năm là nền tảng cho sự thành công của BCI dài hạn.",
+          "asset": "Tài sản trí tuệ về vật liệu sinh học thế hệ mới"
+        }
+      ],
+      "transaction_costs_impact": "Chi phí niềm tin về an toàn và hiệu quả lâu dài của cấy ghép giảm mạnh. Chi phí tìm kiếm, đàm phán và thực thi liên quan đến các quy trình phẫu thuật lặp lại hoặc bảo trì phức tạp bị kéo tụt, mở rộng khả năng tiếp cận và chấp nhận công nghệ.",
+      "action_playbook_for_individual": [
+        "Khuyến nghị 1: DỪNG coi nhận thức con người là một hệ thống tĩnh, không thể nâng cấp; DỪNG dựa hoàn toàn vào các phương pháp học tập/nâng cao nhận thức truyền thống nếu có giải pháp BCI hiệu quả hơn.",
+        "Khuyến nghị 2: TÍCH LŨY năng lực tư duy phản biện, đạo đức học ứng dụng (đặc biệt trong AI & sinh học), hiểu biết về dữ liệu neural và quyền riêng tư, kỹ năng giao thoa (thần kinh học, AI, vật liệu học). Đầu tư vào các công ty R&D tiên phong về vật liệu sinh học/BCI.",
+        "Khuyến nghị 3: Xây dựng vị thế đòn bẩy bằng cách trở thành 'người phiên dịch' giữa các chuyên ngành (ví dụ: nhà khoa học thần kinh <-> kỹ sư AI <-> nhà đạo đức học). Tìm kiếm vai trò cố vấn, nhà phân tích chính sách hoặc nhà phát triển trong các tổ chức định hình tương lai của BCI, nơi bạn có thể ảnh hưởng đến các quy tắc và tiêu chuẩn từ sớm."
+      ]
+    },
+    "created_at": "2026-09-13 00:13:02"
+  },
+  {
+    "id": "scan_1789251470708",
+    "query": "cấy chip não",
+    "result": {
+      "trend_summary": "Xu hướng cấy chip não đang hợp nhất nhận thức sinh học với sức mạnh tính toán và dữ liệu bên ngoài, từ đó định hình lại hoàn toàn bản chất của trí tuệ, giao tiếp và trải nghiệm con người. Nó chuyển dịch giá trị từ việc sở hữu thông tin sang quyền kiểm soát và định hướng tư duy.",
+      "commoditized_assets": [
+        {
+          "why": "Chip não sẽ cung cấp quyền truy cập tức thì, hoàn hảo vào kho dữ liệu khổng lồ và khả năng lưu trữ không giới hạn, làm giảm giá trị của việc ghi nhớ thủ công.",
+          "asset": "Kiến thức/Thông tin thô và năng lực ghi nhớ cơ bản"
+        },
+        {
+          "why": "Các tác vụ nhận thức lặp lại, có thể quy trình hóa sẽ được tăng cường hoặc tự động hóa bởi giao diện máy tính, giảm giá trị của lao động con người trong lĩnh vực này.",
+          "asset": "Kỹ năng xử lý dữ liệu lặp lại/thuật toán đơn giản"
+        },
+        {
+          "why": "Khi luồng thông tin và định hướng nhận thức có thể được kiểm soát và tối ưu hóa từ bên ngoài, khả năng chú ý phân mảnh và tự định hướng theo bản năng sẽ ít giá trị hơn.",
+          "asset": "Sự chú ý (ở dạng phân mảnh và dễ bị phân tâm)"
+        }
+      ],
+      "elite_strategic_moves": [
+        "Đầu tư và kiểm soát hạ tầng cốt lõi, giao thức chuẩn và các API của giao diện não-máy tính, định hình 'hệ điều hành' cho tư duy con người.",
+        "Thiết lập các khuôn khổ pháp lý, đạo đức và quy định về việc sử dụng chip não, nhằm duy trì lợi thế nhận thức và dữ liệu, đồng thời kiểm soát ranh giới giữa cải thiện và can thiệp.",
+        "Thu thập và sở hữu độc quyền các tập dữ liệu thần kinh lớn, các thuật toán cá nhân hóa và mô hình AI được đào tạo trên dữ liệu não bộ của con người, biến chúng thành 'dầu mỏ' của kỷ nguyên mới.",
+        "Áp dụng sớm và tăng cường chip não cho bản thân, con cháu, tạo ra một 'khoảng cách nhận thức' thế hệ, bảo đảm năng lực lãnh đạo và ra quyết định vượt trội."
+      ],
+      "activated_mental_models": [
+        {
+          "mechanism": "Giá trị của chip não tăng theo cấp số nhân khi có nhiều người được kết nối, tạo ra lợi thế cho người kiểm soát mạng lưới hoặc tiêu chuẩn hóa công nghệ ban đầu.",
+          "model_name": "Hiệu ứng mạng (Network Effects)"
+        },
+        {
+          "mechanism": "Đầu tư ban đầu vào công nghệ, dữ liệu và cơ sở hạ tầng chip não sẽ mang lại lợi nhuận vượt trội theo thời gian, củng cố vị thế của những người tiên phong và kiểm soát.",
+          "model_name": "Lợi nhuận tăng dần (Increasing Returns)"
+        },
+        {
+          "mechanism": "Khi các tài nguyên nhận thức cơ bản trở nên dồi dào, những tài sản như sự độc đáo, tính nhân văn không thể thay thế và quyền tự chủ cá nhân sẽ trở nên khan hiếm và có giá trị kinh tế cực cao.",
+          "model_name": "Khan hiếm (Scarcity)"
+        },
+        {
+          "mechanism": "Việc phân tích ai sở hữu, kiểm soát và hưởng lợi từ công nghệ chip não sẽ tiết lộ các động lực ẩn sâu định hình sự chuyển dịch quyền lực và tài sản.",
+          "model_name": "Cơ quan & Động lực (Agency & Incentives)"
+        }
+      ],
+      "complementary_scarcities": [
+        {
+          "why": "Trong một thế giới tràn ngập thông tin, khả năng đặt câu hỏi, kết nối các khái niệm khác biệt, tạo ra khuôn khổ mới và suy nghĩ vượt ra ngoài dữ liệu hiện có sẽ trở thành năng lực cốt lõi.",
+          "asset": "Khả năng tư duy phản biện bậc cao, tổng hợp và sáng tạo ý tưởng độc đáo (Meta-cognition)"
+        },
+        {
+          "why": "Những phẩm chất này không thể dễ dàng số hóa hoặc nhân bản bởi AI; chúng là nền tảng cho sự tin cậy, lãnh đạo và ý nghĩa trong các tương tác giữa con người với con người.",
+          "asset": "Đạo đức, Trí tuệ cảm xúc sâu sắc và Khả năng tạo kết nối nhân văn thực sự"
+        },
+        {
+          "why": "Khi ranh giới giữa tâm trí và công nghệ mờ đi, quyền sở hữu, bảo vệ và kiểm soát dữ liệu tư duy cá nhân sẽ là tài sản quý giá nhất, quyết định quyền tự chủ của một người.",
+          "asset": "Chủ quyền dữ liệu não bộ, quyền kiểm soát danh tính và ý chí tự do"
+        }
+      ],
+      "transaction_costs_impact": "Chi phí giao dịch liên quan đến tìm kiếm thông tin, truyền đạt ý định, truy cập kiến thức, xử lý dữ liệu đơn giản và thậm chí cả sự tin tưởng (qua xác minh trực tiếp của hệ thống) sẽ bị kéo tụt thẳng đứng.",
+      "action_playbook_for_individual": [
+        "Khuyến nghị 1: DỪNG làm ngay việc phụ thuộc vào việc ghi nhớ thông tin thô, xử lý dữ liệu lặp lại hoặc tự động hóa tư duy phản biện bởi công cụ bên ngoài.",
+        "Khuyến nghị 2: TÍCH LŨY các năng lực như tư duy tổng hợp, đặt câu hỏi sâu sắc, sáng tạo không giới hạn, trí tuệ cảm xúc, đạo đức và khả năng thiết lập ranh giới rõ ràng về dữ liệu cá nhân.",
+        "Khuyến nghị 3: Xây dựng vị thế đòn bẩy thông qua việc tạo dựng mạng lưới quan hệ xã hội đáng tin cậy, phát triển chuyên môn sâu trong các lĩnh vực yêu cầu trực giác và sự độc đáo của con người, đồng thời chủ động tham gia vào các diễn ngôn về đạo đức và quản trị công nghệ."
+      ]
+    },
+    "created_at": "2026-09-12 22:17:50"
+  }
+]
