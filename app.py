@@ -108,6 +108,7 @@ from core.study_manager import (
     render_study_dossier_box,
     render_study_library_view,
 )
+from core.book_manager import render_book_shelf_room
 
 
 
@@ -254,6 +255,7 @@ with st.sidebar:
     st.markdown("### 🧭 ĐIỀU HƯỚNG FARROW")
     mode_options = [
         "🏛️ Lâu Đài Ký Ức (The 3 Trinity)",
+        "📖 Tủ Sách Tinh Hoa (Elite Bookshelf)",
         "📚 Thư Viện Chuyên Khảo Sâu (Deep Dossiers)",
         "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
         "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)",
@@ -277,9 +279,11 @@ with st.sidebar:
 
         * **1. Muốn nạp kiến thức mới:** 
           👉 Vào **⚡ Máy Ép Farrow 1-Click** (Dán bài dài/sách -> AI nén thành 3 Mỏ Neo + Hình ảnh dị biệt để nhớ vĩnh viễn).
-        * **2. Muốn học các mô hình có sẵn:** 
+        * **2. Muốn đọc sách & nghiền ngẫm nguyên tắc:** 
+          👉 Vào **📖 Tủ Sách Tinh Hoa** (Đọc toàn văn theo chương, bản nén 10 phút, hỏi đáp AI trực tiếp với từng cuốn sách).
+        * **3. Muốn học các mô hình có sẵn:** 
           👉 Vào **🏛️ Lâu Đài Ký Ức** (18 chủ đề nén sẵn & 160 mô hình tinh hoa Munger/Khoa học/Nghệ thuật & Văn minh).
-        * **3. Muốn rèn phản xạ tư duy & Bách khoa:** 
+        * **4. Muốn rèn phản xạ tư duy & Bách khoa:** 
           👉 Vào **⏱️ Phòng Ép Xung 10 Phút** (Chạy nước rút 10 phút hoặc rút Tam Giác Bách Khoa).
         * **4. Muốn ra lệnh & chỉ đạo AI/Robot như Elon Musk:** 
           👉 Vào **🔬 Phòng Điêu Khắc Đề Bài** (Chuyển ý muốn thô thành Bản đặc tả tối thượng qua Khoa học + Kỹ thuật + Gu thẩm mỹ Arts).
@@ -555,6 +559,10 @@ if app_mode == "🏛️ Lâu Đài Ký Ức (The 3 Trinity)":
                 st.caption(f"Tìm thấy {len(display_items)} kết quả:")
                 for sub_item in display_items[:10]:
                     render_gmm_detailed_model(sub_item, is_expanded=False)
+
+
+elif app_mode == "📖 Tủ Sách Tinh Hoa (Elite Bookshelf)":
+    render_book_shelf_room(active_api_key=active_api_key)
 
 
 elif app_mode == "📚 Thư Viện Chuyên Khảo Sâu (Deep Dossiers)":
