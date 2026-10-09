@@ -238,6 +238,7 @@ def scan_and_load_books() -> List[Dict[str, Any]]:
 
         catalog.append({
             "id": bid,
+            "filename": item.get("filename", f"{bid}.md"),
             "title": title,
             "author": author,
             "category": category,
@@ -420,7 +421,7 @@ def render_book_shelf_room(active_api_key: Optional[str] = None):
             st.download_button(
                 label="📥 Tải File Full (.md)",
                 data=current_book["full_content"],
-                file_name=current_book["filename"],
+                file_name=current_book.get("filename", f"{current_book.get('id', 'book')}.md"),
                 mime="text/markdown",
                 key=f"dl_full_{current_book['id']}"
             )
