@@ -110,6 +110,7 @@ from core.study_manager import (
 )
 from core.book_manager import render_book_shelf_room
 from core.trading_desk import render_adn_trading_desk_room
+from core.nuwa_ui import render_nuwa_forge_room
 
 
 
@@ -262,6 +263,7 @@ with st.sidebar:
         "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)",
         "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
         "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định",
+        "🧬 Xưởng Chưng Cất Tư Duy (Nuwa Cognitive Forge)",
         "🎯 Bàn Tác Chiến H4 & Huấn Luyện Big Boy",
         "⚡ Máy Ép Farrow 1-Click (AI Compressor)",
         "🫁 Trạm Thở Bụng Sạc Pin"
@@ -287,13 +289,15 @@ with st.sidebar:
           👉 Vào **🏛️ Lâu Đài Ký Ức** (18 chủ đề nén sẵn & 160 mô hình tinh hoa Munger/Khoa học/Nghệ thuật & Văn minh).
         * **4. Muốn rèn phản xạ tư duy & Bách khoa:** 
           👉 Vào **⏱️ Phòng Ép Xung 10 Phút** (Chạy nước rút 10 phút hoặc rút Tam Giác Bách Khoa).
-        * **4. Muốn ra lệnh & chỉ đạo AI/Robot như Elon Musk:** 
+        * **5. Muốn ra lệnh & chỉ đạo AI/Robot như Elon Musk:** 
           👉 Vào **🔬 Phòng Điêu Khắc Đề Bài** (Chuyển ý muốn thô thành Bản đặc tả tối thượng qua Khoa học + Kỹ thuật + Gu thẩm mỹ Arts).
-        * **5. Muốn đọc vị thời cuộc, vĩ mô:** 
+        * **6. Muốn đọc vị thời cuộc, vĩ mô:** 
           👉 Vào **📡 Máy Quét Thế Cuộc** (Bóc tách xu hướng, cái gì rẻ đi, cái gì khan hiếm, nước đi tinh hoa).
-        * **6. Muốn giải quyết nan đề cá nhân:** 
+        * **7. Muốn giải quyết nan đề cá nhân:** 
           👉 Vào **🎯 Phân Rã Thực Chiến** (Phân rã nguyên lý gốc, soi 5 lăng kính, lưu Nhật ký quyết định).
-        * **7. Khi não căng thẳng, kiệt pin:** 
+        * **8. Muốn hội chẩn với 14+ vĩ nhân & mở rộng chưng cất:** 
+          👉 Vào **🧬 Xưởng Chưng Cất Tư Duy** (Bàn Hội Chẩn Nữ Oa: chẩn đoán nan đề, phản biện 5 tầng nhận thức, chưng cất bất kỳ ai lưu vào CSDL).
+        * **9. Khi não căng thẳng, kiệt pin:** 
           👉 Vào **🫁 Trạm Thở Bụng** (Thở Box Breathing 2 phút để phục hồi trạng thái não Alpha).
 
         💡 **Mẹo tinh hoa:** Sau khi quét hoặc phân rã, luôn có nút **`⚡ Ép Nén Farrow`** để chuyển thành mỏ neo trí nhớ, và nút **`📥 Xuất Báo Cáo (.md)`** để lưu về máy.
@@ -1149,6 +1153,12 @@ elif app_mode == "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)":
 # -----------------------------------------------------------------------------
 elif app_mode == "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định":
     render_problem_decomposition_room(active_api_key=active_api_key)
+
+# -----------------------------------------------------------------------------
+# PHÒNG 4.2: XƯỞNG CHƯNG CẤT TƯ DUY & BÀN CỐ VẤN TINH HOA (NUWA COGNITIVE FORGE)
+# -----------------------------------------------------------------------------
+elif app_mode == "🧬 Xưởng Chưng Cất Tư Duy (Nuwa Cognitive Forge)":
+    render_nuwa_forge_room(active_api_key=active_api_key)
 
 # -----------------------------------------------------------------------------
 # PHÒNG 4.5: BÀN TÁC CHIẾN H4 & HUẤN LUYỆN BIG BOY (AIR SNIPER DESK)
