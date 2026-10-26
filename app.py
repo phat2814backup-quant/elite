@@ -111,6 +111,7 @@ from core.study_manager import (
 from core.book_manager import render_book_shelf_room
 from core.trading_desk import render_adn_trading_desk_room
 from core.nuwa_ui import render_nuwa_forge_room
+from core.tech_radar import render_tech_radar_room
 
 
 
@@ -262,6 +263,7 @@ with st.sidebar:
         "⏱️ Phòng Ép Xung 10 Phút (Focus Sprint)",
         "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)",
         "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)",
+        "🛰️ Tech Radar Tuần (Top 10 Tín Hiệu Tương Lai)",
         "🎯 Phân Rã Thực Chiến & Nhật Ký Quyết Định",
         "🧬 Xưởng Chưng Cất Tư Duy (Nuwa Cognitive Forge)",
         "🎯 Bàn Tác Chiến H4 & Huấn Luyện Big Boy",
@@ -293,11 +295,13 @@ with st.sidebar:
           👉 Vào **🔬 Phòng Điêu Khắc Đề Bài** (Chuyển ý muốn thô thành Bản đặc tả tối thượng qua Khoa học + Kỹ thuật + Gu thẩm mỹ Arts).
         * **6. Muốn đọc vị thời cuộc, vĩ mô:** 
           👉 Vào **📡 Máy Quét Thế Cuộc** (Bóc tách xu hướng, cái gì rẻ đi, cái gì khan hiếm, nước đi tinh hoa).
-        * **7. Muốn giải quyết nan đề cá nhân:** 
+        * **7. Muốn đón đầu công nghệ & mã nguồn mở mới:** 
+          👉 Vào **🛰️ Tech Radar Tuần** (Top 10 dự án mã nguồn mở đột phá nhất mỗi tuần, bóc tách nút thắt, kiến trúc và ngụ ý tương lai).
+        * **8. Muốn giải quyết nan đề cá nhân:** 
           👉 Vào **🎯 Phân Rã Thực Chiến** (Phân rã nguyên lý gốc, soi 5 lăng kính, lưu Nhật ký quyết định).
-        * **8. Muốn hội chẩn với 14+ vĩ nhân & mở rộng chưng cất:** 
+        * **9. Muốn hội chẩn với 14+ vĩ nhân & mở rộng chưng cất:** 
           👉 Vào **🧬 Xưởng Chưng Cất Tư Duy** (Bàn Hội Chẩn Nữ Oa: chẩn đoán nan đề, phản biện 5 tầng nhận thức, chưng cất bất kỳ ai lưu vào CSDL).
-        * **9. Khi não căng thẳng, kiệt pin:** 
+        * **10. Khi não căng thẳng, kiệt pin:** 
           👉 Vào **🫁 Trạm Thở Bụng** (Thở Box Breathing 2 phút để phục hồi trạng thái não Alpha).
 
         💡 **Mẹo tinh hoa:** Sau khi quét hoặc phân rã, luôn có nút **`⚡ Ép Nén Farrow`** để chuyển thành mỏ neo trí nhớ, và nút **`📥 Xuất Báo Cáo (.md)`** để lưu về máy.
@@ -1147,6 +1151,12 @@ elif app_mode == "🔬 Phòng Điêu Khắc Đề Bài (Problem Formulation Lab)
 # -----------------------------------------------------------------------------
 elif app_mode == "📡 Máy Quét Đọc Vị Thế Cuộc (AI Macro Radar)":
     render_macro_radar_room(active_api_key=active_api_key, is_embedded=False)
+
+# -----------------------------------------------------------------------------
+# PHÒNG 4.1: TECH RADAR TUẦN (TOP 10 TÍN HIỆU TƯƠNG LAI)
+# -----------------------------------------------------------------------------
+elif app_mode == "🛰️ Tech Radar Tuần (Top 10 Tín Hiệu Tương Lai)":
+    render_tech_radar_room(active_api_key=active_api_key)
 
 # -----------------------------------------------------------------------------
 # PHÒNG 4: PHÂN RÃ THỰC CHIẾN & NHẬT KÝ QUYẾT ĐỊNH
