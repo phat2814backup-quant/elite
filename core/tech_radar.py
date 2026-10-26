@@ -182,21 +182,11 @@ def export_week_to_markdown(week_data: Dict[str, Any]) -> str:
 
 def render_tech_radar_room(active_api_key: Optional[str] = None):
     """Giao diện Streamlit của phòng chức năng Tech Radar Tuần."""
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
-                border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="display: inline-block; background: #2563eb; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 6px;">
-            🛰️ ELITE OPEN-SOURCE RADAR
-        </div>
-        <h2 style="color: #f8fafc; margin: 4px 0 8px 0; font-weight: 800; font-size: 1.6rem;">
-            TOP 10 MÃ NGUỒN MỞ ĐỊNH HÌNH TƯƠNG LAI
-        </h2>
-        <p style="color: #94a3b8; margin: 0; font-size: 0.95rem; line-height: 1.5;">
-            Lọc bỏ 95% repo wrapper và đồ chơi tạm bợ. Giới hạn cứng <b>đúng 10 dự án mỗi tuần</b> tạo đột phá kiến trúc thực chất.
-            Lưu trữ lịch sử theo tuần để rèn luyện độ nhạy dự đoán thế cuộc công nghệ.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("## 🛰️ Tech Radar Tuần: Top 10 Mã Nguồn Mở Định Hình Tương Lai")
+    st.caption(
+        "Lọc bỏ 95% repo wrapper và đồ chơi ngắn hạn. Giới hạn cứng **đúng 10 dự án mỗi tuần** tạo đột phá kiến trúc thực chất. "
+        "Lưu trữ lịch sử theo tuần để rèn luyện độ nhạy dự đoán thế cuộc công nghệ."
+    )
 
     db = load_tech_radar_data()
     weeks = db.get("weeks", [])
@@ -227,7 +217,7 @@ def render_tech_radar_room(active_api_key: Optional[str] = None):
 
     with col_btn_scout:
         st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-        if st.button("🔄 Cập Nhật Tuần Mới (AI Scout)", help="Chạy AI quét và cập nhật lại Top 10 dự án tuần hiện tại"):
+        if st.button("🔄 Cập Nhật Tuần Mới (AI Scout)", help="Chạy AI quét và cập nhật lại Top 10 dự án tuần hiện tại", use_container_width=True):
             with st.spinner("Đang kích hoạt Elite AI Scout quét GitHub Trending & Arxiv..."):
                 res = generate_weekly_tech_radar_with_ai(active_api_key=active_api_key, force_week_id=current_iso)
                 if res:
@@ -241,16 +231,13 @@ def render_tech_radar_room(active_api_key: Optional[str] = None):
             label="📥 Xuất Markdown (.md)",
             data=md_content,
             file_name=f"Elite_Tech_Radar_{selected_week_id}.md",
-            mime="text/markdown"
+            mime="text/markdown",
+            use_container_width=True
         )
 
-    # Macro Theme Banner
-    st.markdown(f"""
-    <div style="background: rgba(30, 58, 138, 0.25); border-left: 4px solid #3b82f6; padding: 12px 18px; border-radius: 6px; margin: 15px 0;">
-        <span style="font-weight: 700; color: #60a5fa; font-size: 0.9rem;">🌊 CHỦ ĐIỂM DÒNG CHẢY TUẦN NÀY:</span><br>
-        <span style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6;">{selected_week.get('macro_theme', '')}</span>
-    </div>
-    """, unsafe_allow_html=True)
+    # Macro Theme Banner (Theme Adaptive)
+    macro_text = selected_week.get("macro_theme", "")
+    st.info(f"**🌊 CHỦ ĐIỂM DÒNG CHẢY TUẦN NÀY ({selected_week.get('week_id', '')}):**\n\n{macro_text}", icon="🌊")
 
     # Metrics Strip
     items = selected_week.get("items", [])
@@ -291,7 +278,7 @@ def render_tech_radar_room(active_api_key: Optional[str] = None):
 
     st.caption(f"Đang hiển thị **{len(filtered_items)}** dự án phù hợp tiêu chí:")
 
-    # Hiển thị từng Card dự án
+    # Hiển thị từng Card dự án chuẩn tương thích Light & Dark Theme
     for it in filtered_items:
         rank = it.get("rank", 0)
         name = it.get("name", "")
@@ -304,53 +291,29 @@ def render_tech_radar_room(active_api_key: Optional[str] = None):
         innovation = it.get("core_innovation", "")
         implication = it.get("future_implication", "")
 
-        maturity_color = "#10b981" if "Production" in maturity else ("#f59e0b" if "Growth" in maturity or "tăng tốc" in maturity else "#a855f7")
-
         card_title = f"#{rank} · {name}  |  {stars}  [{category}]"
         with st.expander(card_title, expanded=(rank <= 3 and not search_query)):
-            st.markdown(f"""
-            <div style="margin-bottom: 12px;">
-                <span style="font-size: 1.15rem; font-weight: 700; color: #f1f5f9;">{name}</span>
-                &nbsp;·&nbsp;
-                <a href="{url}" target="_blank" style="color: #60a5fa; text-decoration: none; font-size: 0.95rem;">🔗 Mở GitHub Repo ↗</a>
-                &nbsp;·&nbsp;
-                <span style="background: {maturity_color}22; color: {maturity_color}; border: 1px solid {maturity_color}55; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">
-                    {maturity}
-                </span>
-            </div>
-            <div style="font-size: 1rem; color: #cbd5e1; margin-bottom: 15px; font-style: italic;">
-                💡 "{one_liner}"
-            </div>
-            """, unsafe_allow_html=True)
+            # Header dự án sắc nét, tương thích 100% theme
+            st.markdown(f"#### #{rank}. [{name}]({url}) &nbsp; `{stars}` &nbsp; `{category}` &nbsp; `{maturity}`")
+            st.markdown(f"👉 *\"{one_liner}\"*")
 
+            # 2 Cột: Nút thắt và Đột phá kiến trúc dùng Callout tiêu chuẩn (Chữ siêu rõ trên nền Sáng lẫn Tối)
             c_bot, c_inno = st.columns(2)
             with c_bot:
-                st.markdown("""
-                <div style="background: rgba(239, 68, 68, 0.08); border-left: 3px solid #ef4444; padding: 10px 14px; border-radius: 4px; height: 100%;">
-                    <div style="color: #f87171; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">⚡ NÚT THẮT CỔ CHAI GIẢI QUYẾT:</div>
-                    <div style="color: #e2e8f0; font-size: 0.9rem; line-height: 1.5;">""" + bottleneck + """</div>
-                </div>
-                """, unsafe_allow_html=True)
+                st.error(f"**⚡ NÚT THẮT CỔ CHAI GIẢI QUYẾT:**\n\n{bottleneck}")
 
             with c_inno:
-                st.markdown("""
-                <div style="background: rgba(59, 130, 246, 0.08); border-left: 3px solid #3b82f6; padding: 10px 14px; border-radius: 4px; height: 100%;">
-                    <div style="color: #60a5fa; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">🔬 ĐỘT PHÁ KIẾN TRÚC CỐT LÕI:</div>
-                    <div style="color: #e2e8f0; font-size: 0.9rem; line-height: 1.5;">""" + innovation + """</div>
-                </div>
-                """, unsafe_allow_html=True)
+                st.info(f"**🔬 ĐỘT PHÁ KIẾN TRÚC CỐT LÕI:**\n\n{innovation}")
 
-            st.markdown("""
-            <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; padding: 10px 14px; border-radius: 4px; margin-top: 12px;">
-                <div style="color: #34d399; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">🔮 NGỤ Ý TƯƠNG LAI & ĐÒN BẨY ELITE:</div>
-                <div style="color: #e2e8f0; font-size: 0.9rem; line-height: 1.5;">""" + implication + """</div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Ngụ ý tương lai dùng success box rõ ràng
+            st.success(f"**🔮 NGỤ Ý TƯƠNG LAI & ĐÒN BẨY ELITE:**\n\n{implication}")
 
-            # Phím tắt chuyển nhanh sang máy nén Farrow
+            # Phím tắt hành động
             f_col_act1, f_col_act2 = st.columns([3, 1])
+            with f_col_act1:
+                st.markdown(f"🔗 **GitHub:** [{url}]({url})")
             with f_col_act2:
-                if st.button(f"⚡ Nén Farrow (#{rank})", key=f"btn_farrow_{selected_week_id}_{rank}"):
+                if st.button(f"⚡ Nén Farrow (#{rank})", key=f"btn_farrow_{selected_week_id}_{rank}", use_container_width=True):
                     st.session_state["farrow_input_text"] = f"DỰ ÁN: {name}\nBẢN CHẤT: {one_liner}\nNÚT THẮT: {bottleneck}\nKIẾN TRÚC: {innovation}\nNGỤ Ý TƯƠNG LAI: {implication}"
                     st.session_state["app_mode_redirect"] = "⚡ Máy Ép Farrow 1-Click (AI Compressor)"
                     st.rerun()
